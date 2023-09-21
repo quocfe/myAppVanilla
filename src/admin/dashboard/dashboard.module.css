@@ -1,0 +1,130 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+input,
+select,
+textarea {
+  background-color: transparent;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+body {
+  min-height: 100vh;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.admin {
+  height: 100vh;
+}
+
+.adminLayout {
+  width: 100% !important;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.nav {
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.nav h1 {
+  text-align: center;
+  padding: 20px 10px;
+  margin: 0;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.nav ul {
+  padding: 10px !important;
+  border-bottom: 1px solid #dedede;
+  margin: 0;
+}
+
+.nav ul li {
+  list-style-type: none;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  transition: all 0.1s linear;
+  border-radius: 10px !important;
+  padding: 0 10px !important;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  border: none !important;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 15px 10px !important;
+}
+
+.nav ul li ion-icon {
+  font-size: 30px;
+}
+
+.nav ul li:hover {
+  background-color: #91c6cb;
+}
+
+.accordionBody {
+  border-bottom: none !important;
+}
+
+.adminMain {
+  background-color: #f7f7f7d3;
+}
+
+.adminHeader {
+  padding: 10px 25px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adminHeader img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.adminHeader ion-icon {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.adminMain .content {
+  padding: 20px 25px;
+}
