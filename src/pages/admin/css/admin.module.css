@@ -54,10 +54,12 @@ body {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.nav h1 {
+.nav > a {
   text-align: center;
   padding: 20px 10px;
   margin: 0;
+  font-size: 30px;
+  color: #fff;
   border-bottom: 1px solid #d3d3d3;
 }
 
@@ -127,4 +129,40 @@ body {
 
 .adminMain .content {
   padding: 20px 25px;
+}
+
+.headTable th {
+  padding: 10px 20px !important;
+  text-align: center;
+}
+
+.headTable th:first-child {
+  text-align: left;
+}
+
+.headTable th:last-child {
+  font-size: 20px;
+}
+
+.headBody td {
+  padding: 10px 20px !important;
+  text-align: center;
+}
+
+.headBody td:first-child {
+  text-align: left;
+}
+.addProducts {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 25px;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 600;
+  margin-bottom: 40px;
 }

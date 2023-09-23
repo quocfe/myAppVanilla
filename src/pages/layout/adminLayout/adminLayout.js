@@ -1,13 +1,11 @@
-import style from "./dashboard.module.css";
+import style from "../../admin/css/admin.module.css";
 
-console.log(style)
-
-const dashboard = () => {
+const adminLayout = (content) => {
   const template = `
   <div class=${style.admin}>
   <div class=${style.adminLayout}>
     <div class=${style.nav}>
-      <h1>ShopPoly</h1>
+      <a href="/">Poly Shop</a>
       <ul>
         <li>
           <a href="/admin">DashBoard</a>
@@ -37,10 +35,42 @@ const dashboard = () => {
         >
           <ul class=${style.accordionBody}>
             <li>
-              <a href="/admin/products">Danh sách sản phẩm</a>
+              <a href="/admin/products" >Danh sách sản phẩm</a>
             </li>
             <li>
-              <a href="">Thêm sản phẩm</a>
+              <a href="/admin/products/add" >Thêm sản phẩm</a>
+            </li>
+          </ul>
+        </div>
+      </ul>
+      
+      <ul lass="accordion accordion-flush" id="accordionCate">
+        <li class="accordionItem">
+          <a
+            class="accordion-header"
+            id="flush-headingCate"
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseCate"
+            aria-expanded="false"
+            aria-controls="flush-collapseCate"
+            >Danh mục</a
+          >
+          <ion-icon name="cart-outline"></ion-icon>
+        </li>
+        <div
+          id="flush-collapseCate"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingCate"
+          data-bs-parent="#accordionCate"
+        >
+          <ul class=${style.accordionBody}>
+            <li>
+              <a href="/admin/categories" >Danh sách danh mục</a>
+            </li>
+            <li>
+              <a href="/admin/categories/add" >Thêm danh mục</a>
             </li>
           </ul>
         </div>
@@ -48,52 +78,19 @@ const dashboard = () => {
     </div>
     <div class=${style.adminMain}>
       <div class=${style.adminHeader}>
-        <img src="./assets/img/profile/img-1.jpg" alt="" />
+        <img src="./../src/asset/images/person_1.jpg" alt="" />
         <a href="">
           <ion-icon name="log-out-outline"></ion-icon>
         </a>
       </div>
       <div class=${style.content}>
-        <table class="table caption-top">
-          <caption>
-            List of users
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
+        ${content}
       </div>
     </div>
   </div>
 </div>
-
   `
   return template
 };
 
-export default dashboard;
+export default adminLayout;

@@ -71,7 +71,7 @@ const header = () => {
           </ul>
         </li>
         <li>
-          <a href="">ABOUT</a>
+          <a href="/about">ABOUT</a>
         </li>
         <li>
           <a href="">SHOP</a>
