@@ -20,15 +20,16 @@ const category = () => {
   }, [])  
 
   useEffect(() => {
-    const btnsDelete = document.querySelectorAll(".btn-danger");
-    btnsDelete.forEach((btnDelete) => {
+      const btnsDelete = document.querySelectorAll(".btn-danger");
+      btnsDelete.forEach((btnDelete) => {
       btnDelete.addEventListener("click", async function  () {
         const cateID = this.dataset.id;
         try {
-          await messageDelete()
-          await categoryApi.deleteCategory(cateID);
-          const newCate = categories.filter((item) => item.id != cateID);
-          setCategories(newCate);
+            if (!(await messageDelete())) return
+            await categoryApi.deleteCategory(cateID);
+            const newCate = categories.filter((item) => item.id != cateID);
+            setCategories(newCate);
+          
         } catch (error) {
           console.log(error)
         }
@@ -54,7 +55,7 @@ const category = () => {
                 <td>${cate.name}</td>
                 <td>
                   <button data-id=${cate.id} type="button" class="btn btn-danger">DELETE</button>
-                  <a  href=/admin/category/${cate.id}/edit type="button" class="btn btn-primary">EDIT</a>
+                  <a  href=/admin/categories/${cate.id}/edit type="button" class="btn btn-primary">EDIT</a>
                 </td>
               </tr>
               `

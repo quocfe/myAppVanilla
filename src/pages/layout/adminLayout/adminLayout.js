@@ -78,7 +78,6 @@ const adminLayout = (content) => {
     </div>
     <div class=${style.adminMain}>
       <div class=${style.adminHeader}>
-        <img src="./../src/asset/images/person_1.jpg" alt="" />
         <a href="">
           <ion-icon name="log-out-outline"></ion-icon>
         </a>

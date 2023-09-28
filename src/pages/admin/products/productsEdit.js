@@ -1,10 +1,12 @@
 import productAPI from "@/api/productApi";
+import { messageQuestion } from "@/components";
 import { router, useEffect, useState } from "@/utils";
 import Swal from "sweetalert2";
 
 const productsEdit = (data) => {
   const productID = data.id;
   const [product, setProduct] = useState({});
+
 
   useEffect( async ()=> {
     try {
@@ -24,36 +26,22 @@ const productsEdit = (data) => {
     const productDescription = document.querySelector("#productDescription");
     const productImg = document.querySelector("#productImg");
     const cateSelect = document.querySelector(".form-select");
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      Swal.fire({
-        title: 'UPDATE PRODUCT',
-        text: "",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'UPDATE'
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          try {
-            await productAPI.updateProduct({
-              id: productID,
-              title:productName.value,
-              price:+productPrice.value,
-              description:  productDescription.value,
-              category: cateSelect.value,
-              image :  productImg.value
-          });
-            Swal.fire(
-              'UPDATE successfully!',
-            )
-              router.navigate("/admin/products")
-          } catch (error) {
-            console.log(error)
-          }
-        }
-      })
+      try {
+        await productAPI.updateProduct({
+          id: productID,
+          title:productName.value,
+          price:+productPrice.value,
+          description:  productDescription.value,
+          category: cateSelect.value,
+          image :  productImg.value
+      });
+      if (!(await messageQuestion("Update product"))) return
+        router.navigate("/admin/products")
+      } catch (error) {
+        console.log(error)
+      }
     });
   })
 

@@ -1,19 +1,36 @@
 import categoryApi from "@/api/categoryApi";
 import { messageQuestion } from "@/components";
-import { router, useEffect } from "@/utils";
+import { router, useEffect, useState } from "@/utils";
 
-const categoryAdd = () => {
+const categoryEdit = (data) => {
+  const cateID = data.id;
+  const [category, setCategory] = useState({});
+  console.log("state", category)
+  useEffect(()=> {
+    (async () => {
+      try {
+          const response = await categoryApi.getCategory(cateID)
+          if (response.status === 200) {
+            setCategory(response.data);
+          }
+      } catch (error) {
+          console.log(error);
+      }
+  })();
+  }, [])
 
   useEffect(()=> {
     const form = document.querySelector(".form");
     const categoryName = document.querySelector("#categoryName");
+    const idCate = document.querySelector("#idCate");
 
-    form.addEventListener("submit",  async (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault()
       try {
-        if (!(await messageQuestion("Add category"))) return
-        await categoryApi.addCategory({
-              name: categoryName.value
+        if (!(await messageQuestion("Update category"))) return
+        await categoryApi.updateCategoy({
+          id:  idCate.value,
+          name: categoryName.value
         });
         router.navigate("/admin/categories")
       } catch (error) {
@@ -37,8 +54,9 @@ const categoryAdd = () => {
             disabled
             type="text"
             class="form-control"
-            id="id"
+            id="idCate"
             placeholder="Auto increment"
+            value="${category.id ?? ""}"
           />
         </div>
       </div>
@@ -52,15 +70,16 @@ const categoryAdd = () => {
             class="form-control"
             id="categoryName"
             placeholder=""
+            value="${category.name ?? ""}"
           />
         </div>
       </div>
     </div>
-    <button class="btn btn-primary">Add Category</button>
+    <button class="btn btn-primary">Update Category</button>
   </form>
 </div>
   `
   return template
 };
 
-export default categoryAdd;
+export default categoryEdit;

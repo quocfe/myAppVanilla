@@ -23,7 +23,7 @@ const products =  () => {
         btn.addEventListener('click', async  function ()  {
           let productID = this.dataset.id;
           try {
-            await messageDelete()
+            if (!(await messageDelete())) return
             await productAPI.deleteProduct(productID);
             let newProduct = data.filter((item) => item.id != productID);
             setData(newProduct);

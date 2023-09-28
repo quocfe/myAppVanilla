@@ -2,6 +2,7 @@ import { router, useEffect } from "@/utils";
 import style from "../css/admin.module.css";
 import productAPI from "@/api/productApi";
 import Swal from "sweetalert2";
+import { messageQuestion } from "@/components";
 
 const productsAdd = () => {
   useEffect(() => {
@@ -12,35 +13,21 @@ const productsAdd = () => {
     const productImg = document.querySelector("#productImg");
     const cateSelect = document.querySelector(".form-select");
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      Swal.fire({
-        title: 'ADD PRODUCT',
-        text: "",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Add'
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          try {
-            await productAPI.addProduct({
-              title:productName.value,
-              price:+productPrice.value,
-              description:  productDescription.value,
-              category: cateSelect.value,
-              image :  productImg.value
-          });
-            Swal.fire(
-              'Add successfully!',
-            )
-              router.navigate("/admin/products")
-          } catch (error) {
-            console.log(error)
-          }
-        }
-      })
+      try {
+        await productAPI.addProduct({
+          title:productName.value,
+          price:+productPrice.value,
+          description:  productDescription.value,
+          category: cateSelect.value,
+          image :  productImg.value
+      });
+      if (!(await messageQuestion("Add products"))) return
+      router.navigate("/admin/products");
+      } catch (error) {
+        console.log(error);
+      }
     });
   });
 

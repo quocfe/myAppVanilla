@@ -4,18 +4,25 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 import { render, router } from "./utils";
 import { clientLayout,adminLayout } from "./pages/layout";
-import { about, homepage } from "./pages/client";
+import { about, cart, homepage, shop } from "./pages/client";
 import { category, categoryAdd, dashboard, products, productsAdd, productsEdit } from "./pages/admin";
+import categoryEdit from './pages/admin/category/categoryEdit';
 
 const app = document.querySelector("#app");
 
 
 router.on("/", () => {
-  render(()=>clientLayout(homepage()), app);
+  render(homepage, app);
 });
 router.on("/about", () => {
-  render(()=>clientLayout(about()), app);
+  render(about, app);
 });
+router.on("/shop", () => {
+  render(shop, app)
+});
+router.on("/cart", () => {
+  render(cart, app)
+})
 
 // admin
 
@@ -38,6 +45,9 @@ router.on("/admin/categories", () => {
 })
 router.on("/admin/categories/add", () => {
   render(()=>adminLayout(categoryAdd()), app)
+})
+router.on("/admin/categories/:id/edit", ({data}) => {
+  render(()=>adminLayout(categoryEdit(data)), app)
 })
 // admin
 router.notFound(() => render(notFound, app));

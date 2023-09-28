@@ -10,12 +10,16 @@ const messageDelete = async  () => {
     cancelButtonColor: '#d33',
     confirmButtonText: 'Yes, delete it!'
   }).then( async (result) => {
+    console.log('result', result)
     if (result.isConfirmed) {
       await Swal.fire({
         title: 'Deleted!',
         icon: 'success',
       })
-    } 
+      return true
+    }  else if (result.isDismissed) {
+      return false
+    }
   })
 };
 
