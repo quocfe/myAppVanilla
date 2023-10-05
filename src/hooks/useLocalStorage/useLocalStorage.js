@@ -1,11 +1,12 @@
 import { useEffect, useState } from "@/utils";
 
 function useLocalStorage(key, initialValue) {
-  // Get the initial value from localStorage or use the provided initialValue
-  const [storedValue, setStoredValue] = useState(() => {
-    const item = window.localStorage.getItem(key);
-    return item ? JSON.parse(item) : initialValue;
-  });
+  const initialFn = () => {
+    const item = JSON.parse(localStorage.getItem(key)) || initialValue;
+    return item ;
+  }
+  const [storedValue, setStoredValue] = useState(initialFn());
+
 
   const setValue = (value) => {
     try {

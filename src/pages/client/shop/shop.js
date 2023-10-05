@@ -1,4 +1,4 @@
-import productAPI from "@/api/productApi";
+import {productAPI} from "@/api";
 import { useLocalStorage, useQuantity } from "@/hooks";
 import { useEffect, useState } from "@/utils";
 import cart from "../cart/cart";
@@ -20,7 +20,7 @@ const shop = () => {
 
   useEffect(()=> {
     if (currentID?.length === 0) {
-      cart( JSON.parse(localStorage.getItem('id')))
+      cart(JSON.parse(localStorage.getItem('id')))
     } else {
       cart(currentID)
     }
@@ -30,20 +30,16 @@ const shop = () => {
     const addToCartbtns = document.querySelectorAll('.addToCart');
     const handleClickAdd = (e) => {
       const prdID = +e.currentTarget.dataset.id;
-      if (!currentID?.includes(prdID)) {
         if (!(idLocal === null)) {
           let newPrdID = [...idLocal];
           newPrdID.push(prdID)
           setCurrentID(newPrdID);
-          useQuantity(currentID)
+          useQuantity(newPrdID)
         } else {
           setCurrentID((prevID) => [...prevID, prdID]);
           useQuantity(currentID)
 
         }
-      } else {
-        // Tang so luong cua san pham da ton tai
-      }
     }
 
     addToCartbtns.forEach((btn) => {
@@ -55,7 +51,7 @@ const shop = () => {
       })
     }
     
-  }, )
+  })
 
 
 
@@ -123,7 +119,7 @@ const shop = () => {
               </div>
             </div>
             <div class="row mb-5">
-            ${product.map(el => `
+            ${product?.map(el => `
               <a class="col-lg-4 mb-4 col-md-6 col-sm-6 text-decoration-none">
                 <div class="item border">
                   <figure class="item-image">
@@ -136,8 +132,8 @@ const shop = () => {
                       <span>$${el.price}</span>
                     </div>
                     <div class="mt-20"> 
-                      <button type="button" data-id=${el.id} class="btn btn-primary addToCart">Add too cart</button>
-                      <button type="button" class="btn btn-info">See more</button>
+                      <div data-id=${el.id} class="btn btn-primary addToCart">Add too cart</div>
+                      <button class="btn btn-info">See more</button>
                     </div>
                   </div>
                 </div>

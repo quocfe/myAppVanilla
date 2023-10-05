@@ -4,24 +4,34 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 import { render, router } from "./utils";
 import { clientLayout,adminLayout } from "./pages/layout";
-import { about, cart, homepage, shop } from "./pages/client";
+import { about, cart, checkout, homepage, shop, signIn, signUp } from "./pages/client";
 import { category, categoryAdd, dashboard, products, productsAdd, productsEdit } from "./pages/admin";
 import categoryEdit from './pages/admin/category/categoryEdit';
 
 const app = document.querySelector("#app");
 
-
 router.on("/", () => {
-  render(homepage, app);
+  render(() => clientLayout(homepage()), app);
 });
 router.on("/about", () => {
-  render(about, app);
+  render(() => clientLayout(about()), app);
 });
 router.on("/shop", () => {
-  render(shop, app)
+  render(() => clientLayout(shop()), app)
 });
-router.on("/cart", () => {
-  render(cart, app)
+router.on({
+  "/cart": () => {
+    render(() => clientLayout(cart()), app)
+  },
+  "/cart/:checkout": () => {
+    render(() => clientLayout(checkout()), app)
+  }
+})
+router.on("/login", ()=> render(() => clientLayout(signIn()), app));
+router.on("/signup", ()=> render(() => clientLayout(signUp()), app))
+router.on("/logout", ()=> {
+  localStorage.removeItem("user")
+  router.navigate('/')
 })
 
 // admin

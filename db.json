@@ -325,27 +325,161 @@
       "user_phone_number": "123-456-7890",
       "created_date": "2023-09-28T12:00:00Z",
       "status": "Delivered"
+    },
+    {
+      "user_id": "2",
+      "user_address": "Ha noi",
+      "user_email": "hanoi@example.com",
+      "user_phone_number": "0383995412",
+      "created_date": "2023-09-28T12:00:00Z",
+      "status": "Delivered",
+      "id": 2
+    },
+    {
+      "user_id": "2",
+      "user_address": "undefined - Phường Hòa Minh - Quận Liên Chiểu - Thành phố Đà Nẵng",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "03-10-2023",
+      "status": "Delivered",
+      "id": 3
+    },
+    {
+      "user_id": "2",
+      "user_address": "Doi Can - Phường Phúc Tân - Quận Hoàn Kiếm - Thành phố Hà Nội",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "03-10-2023",
+      "status": "Delivered",
+      "id": 4
+    },
+    {
+      "user_id": "2",
+      "user_address": "Doi Can - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_email": "dsfa10@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "03-10-2023",
+      "status": "Delivered",
+      "id": 5
+    },
+    {
+      "user_id": "2",
+      "user_address": "123 - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "03-10-2023",
+      "status": "Delivered",
+      "id": 6
+    },
+    {
+      "user_id": "2",
+      "user_address": "123 Quang Trung - Thị trấn Vụ Bản - Huyện Lạc Sơn - Tỉnh Hoà Bình",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "03-10-2023",
+      "status": "Delivered",
+      "id": 7
+    },
+    {
+      "user_id": "2",
+      "user_address": "Doi Can - Phường Đồng Xuân - Quận Hoàn Kiếm - Thành phố Hà Nội",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "03-10-2023",
+      "status": "Delivered",
+      "id": 8
     }
   ],
   "order_details": [
     {
-      "order_id": 1,
+      "id": 1,
+      "orders_id": 1,
       "product_id": 59,
       "quantity": 3,
       "unit_price": 20,
       "total": 60
+    },
+    {
+      "orders_id": 1,
+      "product_id": 6,
+      "quantity": 3,
+      "unit_price": 499,
+      "total": 2994,
+      "id": 2
+    },
+    {
+      "orders_id": 1,
+      "product_id": 7,
+      "quantity": 3,
+      "unit_price": 499,
+      "total": 3493,
+      "id": 3
+    },
+    {
+      "orders_id": 1,
+      "product_id": 6,
+      "quantity": 5,
+      "unit_price": 499,
+      "total": 2994,
+      "id": 4
+    },
+    {
+      "orders_id": 1,
+      "product_id": 7,
+      "quantity": 5,
+      "unit_price": 499,
+      "total": 3493,
+      "id": 5
+    },
+    {
+      "orders_id": 1,
+      "product_id": 6,
+      "quantity": 4,
+      "unit_price": 499,
+      "total": 2994,
+      "id": 6
+    },
+    {
+      "orders_id": 1,
+      "product_id": 7,
+      "quantity": 1,
+      "unit_price": 499,
+      "total": 3493,
+      "id": 7
     }
   ],
   "users": [
     {
       "id": 1,
-      "name": "User 1",
-      "fullname": "fullname 1",
-      "password": "12344556",
-      "address": "Address of User 1",
-      "email": "1@example.com",
-      "phone_number": "123-456-7890",
-      "avatar": "avatar 1"
+      "user_name": "quocnguyen",
+      "user_fullname": "",
+      "user_password": "12344556",
+      "user_email": "quocnguyen@gmail.com",
+      "user_avatar": "avatar 1"
+    },
+    {
+      "user_name": "nguyenA",
+      "user_fullname": "nguyen van A",
+      "user_password": "123456789",
+      "user_email": "quocnguyen111@gmail.com",
+      "user_avatar": "avatar 2",
+      "id": 2
+    },
+    {
+      "user_name": "PhuQuocNguyen",
+      "user_fullname": "",
+      "user_password": "123123",
+      "user_email": "Luti0510@gmail.com",
+      "user_avatar": "",
+      "id": 3
+    },
+    {
+      "user_name": "PhuQuocNguyen",
+      "user_fullname": "",
+      "user_password": "123123",
+      "user_email": "quocnco@gmail.com",
+      "user_avatar": "",
+      "id": 4
     }
   ]
 }

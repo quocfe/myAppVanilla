@@ -25,7 +25,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div
-              class="col-6 col-md-4 order-2 order-md-1 text-left d-flex align-items-center justify-content-start search-form"
+              class="search-form-1 col-6 col-md-4 order-2 order-md-1 text-left d-flex align-items-center justify-content-start search-form"
             >
               <span class="search-btn">
                 <ion-icon name="search-outline"></ion-icon>
@@ -52,11 +52,51 @@
                 <a href="">shopeeES6</a>
               </div>
             </div>
-            <div class="col-6 col-md-4 order-3 order-md-3">
+            <div class="option-form-1 col-6 col-md-4 order-3 order-md-3">
               <div class="d-flex align-items-center justify-content-end">
-                <a href="#" class="header-icon">
-                  <ion-icon name="person"></ion-icon>
-                </a>
+                <div class="header-icon icon-user">
+                  <ion-icon name="person" class="person-icon"></ion-icon>
+                  <img
+                    src="https://media.istockphoto.com/id/1448474701/photo/graphic-designer-smiles-as-she-works-on-a-laptop-in-an-office.webp?b=1&s=612x612&w=0&k=20&c=JFR5nH-aKvlKWR9H9zj6ml6bH5vyR7N_t-MxvBbJexs="
+                    alt=""
+                    class="img-user"
+                  />
+                  <div class="select-login">
+                    <ul class="mb-0">
+                      <li><a href="/login">Đăng nhập</a></li>
+                      <li><a href="/signup">Đăng ký</a></li>
+                    </ul>
+                  </div>
+                  <div class="user-menu">
+                    <div
+                      class="user-menu-head d-flex align-items-center gap-2 mt-4 mb-3"
+                    >
+                      <div class="head-img">
+                        <img
+                          src="https://media.istockphoto.com/id/1448474701/photo/graphic-designer-smiles-as-she-works-on-a-laptop-in-an-office.webp?b=1&s=612x612&w=0&k=20&c=JFR5nH-aKvlKWR9H9zj6ml6bH5vyR7N_t-MxvBbJexs="
+                          alt=""
+                        />
+                      </div>
+                      <div class="head-info d-flex flex-column">
+                        <h3>Nguyễn Phú Quốc</h3>
+                        <span>quocnguyen@gmail.com</span>
+                      </div>
+                    </div>
+                    <hr />
+                    <ul class="user-item">
+                      <li><a href="">Trang cá nhân</a></li>
+                    </ul>
+                    <hr />
+                    <ul class="user-item">
+                      <li><a href="">Đơn hàng của bạn</a></li>
+                    </ul>
+                    <hr />
+                    <ul class="user-item">
+                      <li><a href="">Cài đặt</a></li>
+                      <li><a href="/logout">Đăng xuất</a></li>
+                    </ul>
+                  </div>
+                </div>
                 <a href="#" class="header-icon">
                   <ion-icon name="heart-outline"></ion-icon>
                 </a>
@@ -73,25 +113,82 @@
       </div>
       <div class="header-navigation text-right text-md-center">
         <div class="container">
-          <ul class="header-menu">
-            <li class="has-children show">
-              <a href="">HOME</a>
-              <ul class="dropdown">
-                <li><a href="">Home 1</a></li>
-                <li><a href="">Home 1</a></li>
-                <li><a href="">Home 1</a></li>
+          <div class="row align-items-center justify-content-center">
+            <div
+              class="search-form-2 col-6 col-md-4 order-2 order-md-1 text-left d-flex align-items-center justify-content-start search-form"
+            >
+              <span class="search-btn">
+                <ion-icon
+                  name="search-outline"
+                  role="img"
+                  class="md hydrated"
+                ></ion-icon>
+              </span>
+              <input
+                type="text"
+                class="form-control border-0"
+                placeholder="Search"
+              />
+              <ul class="search-result">
+                <li>result</li>
+                <li>result</li>
+                <li>result</li>
+                <li>result</li>
+                <li>result</li>
+                <li>result</li>
+                <li>result</li>
               </ul>
-            </li>
-            <li>
-              <a href="/about">ABOUT</a>
-            </li>
-            <li>
-              <a href="/shop">SHOP</a>
-            </li>
-            <li>
-              <a href="/contact">CONTACT</a>
-            </li>
-          </ul>
+            </div>
+            <ul
+              class="header-menu col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center"
+            >
+              <li class="has-children show">
+                <a href="">HOME</a>
+                <ul class="dropdown">
+                  <li><a href="">Home 1</a></li>
+                  <li><a href="">Home 1</a></li>
+                  <li><a href="">Home 1</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/about">ABOUT</a>
+              </li>
+              <li>
+                <a href="/shop">SHOP</a>
+              </li>
+              <li>
+                <a href="/contact">CONTACT</a>
+              </li>
+            </ul>
+            <div class="option-form-2 col-6 col-md-4 order-3 order-md-3">
+              <div class="d-flex align-items-center justify-content-end">
+                <a href="#" class="header-icon">
+                  <ion-icon
+                    name="person"
+                    role="img"
+                    class="md hydrated"
+                  ></ion-icon>
+                </a>
+                <a href="#" class="header-icon">
+                  <ion-icon
+                    name="heart-outline"
+                    role="img"
+                    class="md hydrated"
+                  ></ion-icon>
+                </a>
+                <a href="/cart" class="header-icon icon-cart">
+                  <ion-icon
+                    name="cart"
+                    role="img"
+                    class="md hydrated"
+                  ></ion-icon>
+                  <div class="message">
+                    <p>3</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -151,6 +248,11 @@
     <script type="module" src="./src/main.js"></script>
     <script src="./src/asset/js/main.js"></script>
     <script src="./src/utils/common.js"></script>
+    <script type="module" src="./src/utils/fn.js"></script>
     <script src="./src/asset/js/owl.carousel.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/200258fe6f.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

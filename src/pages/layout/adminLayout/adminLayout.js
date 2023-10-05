@@ -1,8 +1,21 @@
+import { useEffect } from "@/utils";
 import style from "../../admin/css/admin.module.css";
 
 const adminLayout = (content) => {
+
+  useEffect(() => {
+    const bodyTag = document.querySelector("body")
+    if (document.querySelector("#signin") || document.querySelector("#signup") || document.querySelector("#admin")) {
+      bodyTag.querySelector('header').style.display = "none"
+      bodyTag.querySelector('footer').style.display = "none"
+    } else {
+      bodyTag.querySelector('header').style.display = "block"
+      bodyTag.querySelector('footer').style.display = "block"
+    }
+  })
+
   const template = `
-  <div class=${style.admin}>
+  <div class=${style.admin} id="admin">
   <div class=${style.adminLayout}>
     <div class=${style.nav}>
       <a href="/">Poly Shop</a>
