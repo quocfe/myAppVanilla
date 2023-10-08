@@ -55,7 +55,7 @@ const category = () => {
                 <td>${cate.name}</td>
                 <td>
                   <button data-id=${cate.id} type="button" class="btn btn-danger">DELETE</button>
-                  <a  href=/admin/categories/${cate.id}/edit type="button" class="btn btn-primary">EDIT</a>
+                  <a  href=/admin&categoriesEdit=${cate.id} type="button" class="btn btn-primary">EDIT</a>
                 </td>
               </tr>
               `

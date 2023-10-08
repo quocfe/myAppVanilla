@@ -115,7 +115,7 @@ const cart = (ids) => {
     if (btnCheckout) {
       btnCheckout.addEventListener("click", () => {
         if (user) {
-          router.navigate('/cart/checkout')
+          router.navigate('/cart&checkout')
         } else {
           toast({
             title: "Thất bại",

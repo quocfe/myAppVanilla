@@ -5,6 +5,10 @@ const productAPI = {
     const url = "/products";
     return callAPI.get(url);
   },
+  getProductMuti (filter) {
+    const url = `/products?${filter}`;
+    return callAPI.get(url);
+  },
   getProduct (id) {
     const url = `/products/${id}`;
     return callAPI.get(url)

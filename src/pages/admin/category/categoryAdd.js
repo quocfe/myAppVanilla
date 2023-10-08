@@ -15,7 +15,7 @@ const categoryAdd = () => {
         await categoryApi.addCategory({
               name: categoryName.value
         });
-        router.navigate("/admin/categories")
+        router.navigate("/admin&categories")
       } catch (error) {
         console.log(error)
       }

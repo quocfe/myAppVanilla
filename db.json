@@ -1,14 +1,6 @@
 {
   "products": [
     {
-      "id": 5,
-      "title": "Huawei P30",
-      "price": 499,
-      "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg"
-    },
-    {
       "id": 6,
       "title": "MacBook Pro",
       "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
@@ -180,13 +172,13 @@
       "thumbnail": "https://i.dummyjson.com/data/products/24/thumbnail.jpg"
     },
     {
-      "id": 25,
-      "title": "Gulab Powder 50 Gram",
-      "description": "Dry Rose Flower Powder Gulab Powder 50 Gram • Treats Wounds",
+      "title": "MacBook Pro 3",
+      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
       "price": 499,
-      "brand": "Dry Rose",
-      "category": "groceries",
-      "thumbnail": "https://i.dummyjson.com/data/products/25/thumbnail.jpg"
+      "brand": "Apple",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+      "id": 25
     },
     {
       "id": 26,
@@ -236,10 +228,6 @@
   ],
   "categories": [
     {
-      "id": 1,
-      "name": "smartphones"
-    },
-    {
       "id": 2,
       "name": "laptops"
     },
@@ -258,62 +246,6 @@
     {
       "id": 6,
       "name": "home-decoration"
-    },
-    {
-      "id": 7,
-      "name": "furniture"
-    },
-    {
-      "id": 8,
-      "name": "tops"
-    },
-    {
-      "id": 9,
-      "name": "womens-dresses"
-    },
-    {
-      "id": 10,
-      "name": "womens-shoes"
-    },
-    {
-      "id": 11,
-      "name": "mens-shirts"
-    },
-    {
-      "id": 12,
-      "name": "mens-shoes"
-    },
-    {
-      "id": 13,
-      "name": "mens-watches"
-    },
-    {
-      "id": 14,
-      "name": "womens-watches"
-    },
-    {
-      "id": 15,
-      "name": "womens-bags"
-    },
-    {
-      "id": 16,
-      "name": "womens-jewellery"
-    },
-    {
-      "id": 17,
-      "name": "sunglasses"
-    },
-    {
-      "id": 18,
-      "name": "automotive"
-    },
-    {
-      "id": 19,
-      "name": "motorcycle"
-    },
-    {
-      "id": 20,
-      "name": "lighting"
     }
   ],
   "orders": [

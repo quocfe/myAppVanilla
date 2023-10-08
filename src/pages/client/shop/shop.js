@@ -1,22 +1,56 @@
-import {productAPI} from "@/api";
-import { useLocalStorage, useQuantity } from "@/hooks";
+import {productAPI, categoryApi} from "@/api";
+import { useQuantity } from "@/hooks";
 import { useEffect, useState } from "@/utils";
 import cart from "../cart/cart";
+import queryString from 'query-string';
+
 
 const shop = () => {
   let idLocal = JSON.parse(localStorage.getItem('id'))
   const currentIDInitial = idLocal != null ?  JSON.parse(localStorage.getItem('id')) : [];
   const [product, setProduct] = useState([]);
+  const [category, setCategory] = useState([])
   const [currentID, setCurrentID] = useState(currentIDInitial);
+  const [totalRow, setTotalRow] = useState();
+  const [filter, setFilter] = useState({
+    _page: 1,
+    _limit: 6
+  })
+  let totalPage = Math.ceil(totalRow / filter._limit);
 
-  useEffect(() => {
-    ( async()=>{
+  useEffect(async ()=> {
+    try {
       const response = await productAPI.getProducts();
-      if (response.status === 200) {
-        setProduct(response.data)
-      } 
-    })()
-  }, [])
+      const responseCate = await categoryApi.getCategories();
+      setTotalRow(response.data.length)
+      setCategory(responseCate.data)
+    } catch (error) {
+      console.log(error)
+    }
+  },[])
+  
+
+  useEffect(async ()=> {
+    const paramString = queryString.stringify(filter);
+    try {
+      const response = await productAPI.getProductMuti(`${paramString}`);
+      setProduct(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  },[])
+
+  useEffect(async ()=> {
+    const paramString = queryString.stringify(filter);
+    try {
+      const response = await productAPI.getProductMuti(`${paramString}`);
+      setProduct(response.data)
+      console.log(paramString)
+    } catch (error) {
+      console.log(error)
+    }
+  },[filter])
+
 
   useEffect(()=> {
     if (currentID?.length === 0) {
@@ -28,6 +62,10 @@ const shop = () => {
 
   useEffect(() => {
     const addToCartbtns = document.querySelectorAll('.addToCart');
+    const btnsPage = document.querySelectorAll(".btn-page");
+    const btnsCate = document.querySelectorAll(".cate-title");
+
+    // 
     const handleClickAdd = (e) => {
       const prdID = +e.currentTarget.dataset.id;
         if (!(idLocal === null)) {
@@ -45,14 +83,58 @@ const shop = () => {
     addToCartbtns.forEach((btn) => {
       btn.addEventListener(('click'), handleClickAdd)
     })
-    return ()=> {
-      addToCartbtns.forEach((btn) => {
-        btn.removeEventListener(('click'), handleClickAdd)
-      })
-    }
-    
-  })
+    // 
 
+    function handlePagination (e) {
+      if (e.currentTarget.classList.contains('pre-page')) {
+        if (filter._page > 1) {
+          let newPage =  filter._page - 1 ;
+          setFilter({
+            ...filter,
+            _page: newPage
+          })
+        } else {
+          e.preventDefault()
+        }
+        
+      } else  if (e.currentTarget.classList.contains('next-page')) {
+        if (filter._page < totalPage) {
+          let newPage = filter._page + 1
+          setFilter({
+            ...filter,
+            _page: newPage
+          })
+        } else if (filter._page === totalPage) {
+          e.preventDefault()
+        }
+      }
+    }
+
+    btnsPage.forEach((btn) => {
+      btn.addEventListener('click', handlePagination)
+    })
+
+    // 
+
+    btnsCate.forEach((btn) => {
+      btn.addEventListener('click', handeSelectCate)
+    })
+
+    function handeSelectCate () {
+      const query = this.innerText;
+      if (query == 'All') {
+        setFilter({
+          _page: 1,
+          _limit: 6
+        })
+      } else {
+        setFilter({
+          category: query
+        })
+      }
+      
+    }
+  })
 
 
   const template = `
@@ -67,54 +149,9 @@ const shop = () => {
                 <div class="">
                   <h2 class="text-black h5">Shop All</h2>
                 </div>
-                <div class="d-flex dropdown-header">
-                  <div class="dropdown mr-1 ml-md-auto">
-                    <button
-                      type="button"
-                      class="btn btn-secondary btn-sm dropdown-toggle"
-                    >
-                      Latest
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuOffset"
-                    >
-                      <a class="dropdown-item" href="#">Men</a>
-                      <a class="dropdown-item" href="#">Women</a>
-                      <a class="dropdown-item" href="#">Children</a>
-                    </div>
-                  </div>
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-secondary btn-sm dropdown-toggle"
-                      id="dropdownMenuReference"
-                      data-toggle="dropdown"
-                      fdprocessedid="v3jglr"
-                      aria-expanded="false"
-                    >
-                      Reference
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuReference"
-                      x-placement="bottom-start"
-                      style="
-                        position: absolute;
-                        will-change: transform;
-                        top: 0px;
-                        left: 0px;
-                        transform: translate3d(0px, 43px, 0px);
-                      "
-                    >
-                      <a class="dropdown-item" href="#">Relevance</a>
-                      <a class="dropdown-item" href="#">Name, A to Z</a>
-                      <a class="dropdown-item" href="#">Name, Z to A</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Price, low to high</a>
-                      <a class="dropdown-item" href="#">Price, high to low</a>
-                    </div>
-                  </div>
+                <div class="d-flex pagination">
+                  <div class="pre-page btn-page ${filter._page === 1 ? 'disabled' : ''}">Prev</div>
+                  <div class="next-page btn-page ${filter._page === totalPage ? 'disabled' : ''}">Next</div>
                 </div>
               </div>
             </div>
@@ -139,8 +176,8 @@ const shop = () => {
                 </div>
               </a>
             `).join("")}
-           
             </div>
+           
           </div>
 
           <div class="sidebar col-md-3 order-1 mb-5 mb-md-0">
@@ -150,23 +187,13 @@ const shop = () => {
               </h3>
               <ul class="list-unstyled mb-0">
                 <li class="mb-2">
-                  <a href="#" class="d-flex justify-content-between"
-                    ><span>Men</span>
-                    <span class="text-black ml-auto">(2,220)</span></a
-                  >
+                  <p class="cate-title">All</p>
                 </li>
+              ${category.map((el) => `
                 <li class="mb-2">
-                  <a href="#" class="d-flex justify-content-between"
-                    ><span>Women</span>
-                    <span class="text-black ml-auto">(2,550)</span></a
-                  >
+                  <p class="cate-title">${el.name}</p>
                 </li>
-                <li class="mb-2">
-                  <a href="#" class="d-flex justify-content-between"
-                    ><span>Children</span>
-                    <span class="text-black ml-auto">(2,124)</span></a
-                  >
-                </li>
+              `).join("")}
               </ul>
             </div>
 

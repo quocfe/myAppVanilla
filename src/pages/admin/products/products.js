@@ -56,7 +56,7 @@ const products =  () => {
                 <td>${product.category}</td>
                 <td>
                   <button data-id=${product.id} type="button" class="btn btn-danger">DELETE</button>
-                  <a  href=/admin/products/${product.id}/edit type="button" class="btn btn-primary">EDIT</a>
+                  <a  href=/admin&productsEdit=${product.id} type="button" class="btn btn-primary">EDIT</a>
                 </td>
               </tr>
           `).join("")}

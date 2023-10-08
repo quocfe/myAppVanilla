@@ -32,7 +32,7 @@ const categoryEdit = (data) => {
           id:  idCate.value,
           name: categoryName.value
         });
-        router.navigate("/admin/categories")
+        router.navigate("/admin&categories")
       } catch (error) {
         console.log(error)
       }

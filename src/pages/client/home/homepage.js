@@ -1,5 +1,35 @@
+import { productAPI } from '@/api';
+import { useEffect, useState } from '@/utils';
+import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
+
 
 const homepage = () => {
+  const [pagi, setPagi] = useState([])
+  const [productLimit, setProductLimit] = useState([])
+
+  console.log(productLimit)
+  useEffect(async ()=> {
+    try {
+      const response = await productAPI.getProductPagination("_page=1&_limit=5");
+      setProductLimit(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  },[])
+
+  useEffect(()=> {
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      }
+    });
+  })
+  
+
   const template = `
   <section id="site-cover">
   <div class="container site-cover-wrapper">
@@ -27,32 +57,28 @@ const homepage = () => {
         <div class="text">
           <h2 class="text-uppercase">Free Shipping</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
+            Miễn phí chi phi vận chuyển toàn quốc với giá trị đơn hàng từ 500.000 VNĐ
           </p>
         </div>
       </div>
       <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4">
         <span class="method-icon">
-          <ion-icon name="car-outline"></ion-icon>
+          <ion-icon name="time-outline"></ion-icon>
         </span>
         <div class="text">
-          <h2 class="text-uppercase">Free Shipping</h2>
+          <h2 class="text-uppercase">Hỗ trợ 24/7</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
+            Đội ngũ CSKH giải đáp thắc mắc 24/7 kể cả ngày lễ
           </p>
         </div>
       </div>
       <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4">
         <span class="method-icon">
-          <ion-icon name="car-outline"></ion-icon>
+          <ion-icon name="reload-outline"></ion-icon>
         </span>
         <div class="text">
-          <h2 class="text-uppercase">Free Shipping</h2>
+          <h2 class="text-uppercase">Đổi trả trong vòng 60 ngày</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
           </p>
         </div>
       </div>
@@ -125,68 +151,32 @@ const homepage = () => {
         <h2 class="featured-heading">Featured Products</h2>
       </div>
     </div>
-    <div class="row pt-5 pb-5">
-      <div class="owl-carousel">
-        <a class="col-lg-4 col-md-6 col-sm-6 text-decoration-none">
-          <div class="item">
-            <figure class="item-image">
-              <img src="/src/asset/images/cloth_1.jpg" alt="" class="m-0" />
-            </figure>
-            <div class="item-text">
-              <h3>Áo ba lỗ đẹp var</h3>
-              <p>Áo tuyệt</p>
-              <span>$100</span>
+    <div class="row pt-5 pb-5 swiper-container">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+        ${productLimit.map((el) => `
+        <div class="swiper-slide rounded overflow-hidden">
+            <div class="item">
+              <figure class="item-image">
+                <img src="${el.thumbnail}" alt="${el.title}" class="m-0" />
+              </figure>
+              <div class="item-text ">
+                <h3>${el.title}</h3>
+                <p class="brand">${el.brand}</p>
+                <span>$${el.price}</span>
+                <div > 
+                  <button type="button" class="btn btn-primary">Add to cart</button>
+                  <button type="button" class="btn btn-info">View</button>
+                </div>
+              </div>
             </div>
           </div>
-        </a>
-        <a class="col-lg-4 col-md-6 col-sm-6 text-decoration-none">
-          <div class="item">
-            <figure class="item-image">
-              <img src="/src/asset/images/cloth_1.jpg" alt="" class="m-0" />
-            </figure>
-            <div class="item-text">
-              <h3>Áo ba lỗ đẹp var</h3>
-              <p>Áo tuyệt</p>
-              <span>$100</span>
-            </div>
-          </div>
-        </a>
-        <a class="col-lg-4 col-md-6 col-sm-6 text-decoration-none">
-          <div class="item">
-            <figure class="item-image">
-              <img src="/src/asset/images/cloth_1.jpg" alt="" class="m-0" />
-            </figure>
-            <div class="item-text">
-              <h3>Áo ba lỗ đẹp var</h3>
-              <p>Áo tuyệt</p>
-              <span>$100</span>
-            </div>
-          </div>
-        </a>
-        <a class="col-lg-4 col-md-6 col-sm-6 text-decoration-none">
-          <div class="item">
-            <figure class="item-image">
-              <img src="/src/asset/images/cloth_1.jpg" alt="" class="m-0" />
-            </figure>
-            <div class="item-text">
-              <h3>Áo ba lỗ đẹp var</h3>
-              <p>Áo tuyệt</p>
-              <span>$100</span>
-            </div>
-          </div>
-        </a>
-        <a class="col-lg-4 col-md-6 col-sm-6 text-decoration-none">
-          <div class="item">
-            <figure class="item-image">
-              <img src="/src/asset/images/cloth_1.jpg" alt="" class="m-0" />
-            </figure>
-            <div class="item-text">
-              <h3>Áo ba lỗ đẹp var</h3>
-              <p>Áo tuyệt</p>
-              <span>$100</span>
-            </div>
-          </div>
-        </a>
+        `).join("")}
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
     </div>
   </div>
@@ -210,17 +200,11 @@ const homepage = () => {
         /></a>
       </div>
       <div class="col-md-12 col-lg-5 text-center pl-md-5">
-        <h2><a href="#">50% less in all items</a></h2>
-        <p class="post-meta mb-4">
-          By <a href="#">Carl Smith</a>
-          <span class="block-8-sep">&bullet;</span> September 3, 2018
-        </p>
+        <h2><a href="#">Giảm ngay từ 5%-15%</a></h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam
-          iste dolor accusantium facere corporis ipsum animi deleniti
-          fugiat. Ex, veniam?
+        Ưu đãi hấp dẫn mùa tựu trường!!! Giảm ngay từ 5%-15% với các sản phẩm như điện thoại, laptop dành riêng cho các bạn học sinh sinh viên
         </p>
-        <p><a href="#" class="btn btn-primary btn-sm">Shop Now</a></p>
+        <p><a href="#" class="btn btn-primary btn-sm">Mua ngay</a></p>
       </div>
     </div>
   </div>
@@ -232,21 +216,3 @@ const homepage = () => {
 
 export default homepage;
 
-$(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:2
-        },
-        1000:{
-            items:3
-        }
-    }
-  });
-});

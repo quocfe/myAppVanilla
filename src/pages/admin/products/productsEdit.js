@@ -38,7 +38,7 @@ const productsEdit = (data) => {
           image :  productImg.value
       });
       if (!(await messageQuestion("Update product"))) return
-        router.navigate("/admin/products")
+        router.navigate("/admin&products")
       } catch (error) {
         console.log(error)
       }

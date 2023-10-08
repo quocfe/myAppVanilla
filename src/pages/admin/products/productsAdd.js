@@ -24,7 +24,7 @@ const productsAdd = () => {
           image :  productImg.value
       });
       if (!(await messageQuestion("Add products"))) return
-      router.navigate("/admin/products");
+      router.navigate("/admin&products");
       } catch (error) {
         console.log(error);
       }

@@ -23,7 +23,7 @@ router.on({
   "/cart": () => {
     render(() => clientLayout(cart()), app)
   },
-  "/cart/:checkout": () => {
+  "/cart&checkout": () => {
     render(() => clientLayout(checkout()), app)
   }
 })
@@ -36,30 +36,31 @@ router.on("/logout", ()=> {
 
 // admin
 
-router.on("/admin", () => {
-  render(()=>adminLayout(dashboard()), app)
+router.on({
+  "/admin": () => {
+    render(()=>adminLayout(dashboard()), app)
+  },
+  "/admin&products": () => {
+    render(()=>adminLayout(products()), app)
+  },
+  "/admin&productsAdd":() => {
+    render(()=>adminLayout(productsAdd()), app)
+  },
+  "/admin&productsEdit=:id": ({data}) => {
+    render(()=>adminLayout(productsEdit(data)), app)
+  },
+  "/admin&categories": () => {
+    render(()=>adminLayout(category()), app)
+  },
+  "/admin&categoriesAdd": () => {
+    render(()=>adminLayout(categoryAdd()), app)
+  },
+  "/admin&categoriesEdit=:id": ({data}) => {
+    console.log('data rorting', data)
+    render(()=>adminLayout(categoryEdit(data)), app)
+  }
 })
-// product
-router.on("/admin/products", () => {
-  render(()=>adminLayout(products()), app)
-})
-router.on("/admin/products/add", () => {
-  render(()=>adminLayout(productsAdd()), app)
-})
-router.on("/admin/products/:id/edit", ({data}) => {
-  render(()=>adminLayout(productsEdit(data)), app)
-})
-// category
-router.on("/admin/categories", () => {
-  render(()=>adminLayout(category()), app)
-})
-router.on("/admin/categories/add", () => {
-  render(()=>adminLayout(categoryAdd()), app)
-})
-router.on("/admin/categories/:id/edit", ({data}) => {
-  render(()=>adminLayout(categoryEdit(data)), app)
-})
-// admin
+
 router.notFound(() => render(notFound, app));
 
 router.resolve();

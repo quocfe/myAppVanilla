@@ -48,10 +48,10 @@ const adminLayout = (content) => {
         >
           <ul class=${style.accordionBody}>
             <li>
-              <a href="/admin/products" >Danh sách sản phẩm</a>
+              <a href="/admin&products" >Danh sách sản phẩm</a>
             </li>
             <li>
-              <a href="/admin/products/add" >Thêm sản phẩm</a>
+              <a href="/admin&productsAdd" >Thêm sản phẩm</a>
             </li>
           </ul>
         </div>
@@ -80,10 +80,10 @@ const adminLayout = (content) => {
         >
           <ul class=${style.accordionBody}>
             <li>
-              <a href="/admin/categories" >Danh sách danh mục</a>
+              <a href="/admin&categories" >Danh sách danh mục</a>
             </li>
             <li>
-              <a href="/admin/categories/add" >Thêm danh mục</a>
+              <a href="/admin&categoriesAdd" >Thêm danh mục</a>
             </li>
           </ul>
         </div>
