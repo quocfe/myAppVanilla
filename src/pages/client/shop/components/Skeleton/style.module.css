@@ -1,0 +1,76 @@
+:root {
+  --loader-background-color: #eeeeee;
+  --loader-highlight-color: #dedede;
+}
+
+.card_container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.skeleton_loader {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    var(--loader-background-color) 25%,
+    var(--loader-highlight-color) 50%,
+    var(--loader-background-color) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 2s infinite ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.avatar_skeleton {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    var(--loader-background-color) 25%,
+    var(--loader-highlight-color) 50%,
+    var(--loader-background-color) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 2s infinite ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.cover_image_skeleton {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    90deg,
+    var(--loader-background-color) 25%,
+    var(--loader-highlight-color) 50%,
+    var(--loader-background-color) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 2s infinite ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

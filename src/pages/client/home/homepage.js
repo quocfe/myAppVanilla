@@ -1,36 +1,68 @@
 import { productAPI } from '@/api';
 import { useEffect, useState } from '@/utils';
-import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
-
+import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs';
+import { useQuantity } from '@/hooks';
+import { cart } from '@/pages/client';
 
 const homepage = () => {
-  const [pagi, setPagi] = useState([])
-  const [productLimit, setProductLimit] = useState([])
+	let idLocal = JSON.parse(localStorage.getItem('id')) || [];
+	const [productLimit, setProductLimit] = useState([]);
+	const [currentID, setCurrentID] = useState(idLocal);
 
-  console.log(productLimit)
-  useEffect(async ()=> {
-    try {
-      const response = await productAPI.getProductPagination("_page=1&_limit=5");
-      setProductLimit(response.data)
-    } catch (error) {
-      console.log(error)
-    }
-  },[])
+	useEffect(async () => {
+		try {
+			const response = await productAPI.getProductMuti('_page=1&_limit=5');
+			setProductLimit(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
 
-  useEffect(()=> {
-    const swiper = new Swiper(".mySwiper", {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      loop: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      }
-    });
-  })
-  
+	useEffect(() => {
+		new Swiper('.mySwiper', {
+			slidesPerView: 3,
+			spaceBetween: 30,
+			loop: true,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+	});
 
-  const template = `
+	useEffect(() => {
+		if (currentID?.length === 0) {
+			cart(JSON.parse(localStorage.getItem('id')));
+		} else {
+			cart(currentID);
+		}
+	}, [currentID]);
+
+	useEffect(() => {
+		const addToCartbtns = document.querySelectorAll('.addToCart');
+
+		if (currentID.length > 0) {
+			useQuantity(currentID);
+		}
+
+		const handleClickAdd = (e) => {
+			const prdID = +e.currentTarget.dataset.id;
+			if (!(idLocal === null)) {
+				let newPrdID = [...idLocal];
+				newPrdID.push(prdID);
+				setCurrentID(newPrdID);
+			} else {
+				setCurrentID((prevID) => [...prevID, prdID]);
+			}
+		};
+
+		addToCartbtns.forEach((btn) => {
+			btn.addEventListener('click', handleClickAdd);
+		});
+		//
+	});
+
+	const template = `
   <section id="site-cover">
   <div class="container site-cover-wrapper">
     <div class="row">
@@ -155,7 +187,9 @@ const homepage = () => {
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
 
-        ${productLimit.map((el) => `
+        ${productLimit
+					.map(
+						(el) => `
         <div class="swiper-slide rounded overflow-hidden">
             <div class="item">
               <figure class="item-image">
@@ -166,13 +200,15 @@ const homepage = () => {
                 <p class="brand">${el.brand}</p>
                 <span>$${el.price}</span>
                 <div > 
-                  <button type="button" class="btn btn-primary">Add to cart</button>
-                  <button type="button" class="btn btn-info">View</button>
+                  <div data-id=${el.id} class="btn btn-primary addToCart">Add too cart</div>
+                  <a href="/product=${el.id}" class="btn btn-info">See more</a>
                 </div>
               </div>
             </div>
           </div>
-        `).join("")}
+        `
+					)
+					.join('')}
 
         </div>
         <div class="swiper-button-next"></div>
@@ -209,10 +245,8 @@ const homepage = () => {
     </div>
   </div>
 </section>
-  `
-  return template
+  `;
+	return template;
 };
 
-
 export default homepage;
-

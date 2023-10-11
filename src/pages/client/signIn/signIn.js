@@ -1,67 +1,65 @@
-import usersAPI from "@/api/usersApi";
-import { toast } from "@/components";
-import { useLocalStorage } from "@/hooks";
-import { Validator } from "@/lib";
-import { router, useEffect, useState } from "@/utils";
+import usersAPI from '@/api/usersApi';
+import { toast } from '@/components';
+import { useLocalStorage } from '@/hooks';
+import { Validator } from '@/lib';
+import { router, useEffect, useState } from '@/utils';
 
 const signIn = () => {
-  const [users, setUsers] = useState([]);
-  const [userLocal, setUserLocal] = useLocalStorage('user', {})
+	const [users, setUsers] = useState([]);
+	const [userLocal, setUserLocal] = useLocalStorage('user', {});
 
-  useEffect(async ()=> {
-    try {
-      const response = await usersAPI.getUsers();
-      if (response.status === 200) {
-        setUsers(response.data)
-      }
-    } catch (error) {
-      
-    }
-  }, [])
+	useEffect(async () => {
+		try {
+			const response = await usersAPI.getUsers();
+			if (response.status === 200) {
+				setUsers(response.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
 
-  
-  useEffect(()=> {
-    Validator({
-      form: "#signin",
-      errorMessage: "form-message",
-      rules: [
-        Validator.isRequired("#email"),
-        Validator.isEmail("#email"),
-        Validator.isRequired("#password"),
-        Validator.isMinLength("#password", 6),
-        // Validator.isStrongPass("#password")
-      ],
-      onsubmit: (data) => {
-        const {email, password} = data;
-        const user = users.filter((user) => user.user_email === email)
-        let emailEmpty = users.some((user) => user.user_email === email)
-        const [{id,user_password}] = user
-      
-        if (!emailEmpty) {
-          toast({
-            title: "Thất bại",
-            message: "Email không tại trên hệ thống !",
-            type: "error",
-            show: true
-          })
-        }  else {
-            if (password != user_password) {
-              toast({
-                title: "Thất bại",
-                message: "Mật khẩu không chính xác !",
-                type: "error",
-                show: true
-              })
-            } else {
-              setUserLocal(id);
-              router.navigate("/");
-            }
+	useEffect(() => {
+		Validator({
+			form: '#signin',
+			errorMessage: 'form-message',
+			rules: [
+				Validator.isRequired('#email'),
+				Validator.isEmail('#email'),
+				Validator.isRequired('#password'),
+				Validator.isMinLength('#password', 6),
+				// Validator.isStrongPass("#password")
+			],
+			onsubmit: (data) => {
+				const { email, password } = data;
+				const user = users.filter((user) => user.user_email === email);
+				let emailEmpty = users.some((user) => user.user_email === email);
+				const [{ id, user_password }] = user;
 
-        }
-      }
-    })
-  })
-  const template = `
+				if (!emailEmpty) {
+					toast({
+						title: 'Thất bại',
+						message: 'Email không tại trên hệ thống !',
+						type: 'error',
+						show: true,
+					});
+				} else {
+					if (password != user_password) {
+						toast({
+							title: 'Thất bại',
+							message: 'Mật khẩu không chính xác !',
+							type: 'error',
+							show: true,
+						});
+					} else {
+						setUserLocal(id);
+						router.navigate('/');
+					}
+				}
+			},
+		});
+	});
+	const template = `
       
       <section class="vh-100" id="signin">
         <div class="container-fluid h-100">
@@ -172,7 +170,7 @@ const signIn = () => {
         </div>
       </section>
   `;
-  return template;
+	return template;
 };
 
 export default signIn;

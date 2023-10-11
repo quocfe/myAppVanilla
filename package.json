@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "eslint": "^8.51.0",
     "json-server": "^0.17.4",
     "nodemon": "^3.0.1",
     "vite": "^4.4.5",

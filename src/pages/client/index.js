@@ -6,7 +6,16 @@ import cart from './cart/cart';
 import checkout from './checkout/checkout';
 import signIn from './signIn/signIn';
 import signUp from './signUp/signUp';
+import detail from './detail/detail';
 
-
-
-export {homepage, about, notFound, shop, cart, checkout, signIn, signUp}
+export {
+	homepage,
+	about,
+	notFound,
+	shop,
+	cart,
+	checkout,
+	signIn,
+	signUp,
+	detail,
+};

@@ -1,83 +1,84 @@
-import usersAPI from "@/api/usersApi";
-import { toast } from "@/components";
-import { Validator } from "@/lib";
-import { router, useEffect, useState } from "@/utils";
-
-
+import usersAPI from '@/api/usersApi';
+import { toast } from '@/components';
+import { Validator } from '@/lib';
+import { router, useEffect, useState } from '@/utils';
 
 const signUp = () => {
-  const [users, setUsers] = useState({});
+	const [users, setUsers] = useState({});
 
+	useEffect(async () => {
+		try {
+			const response = await usersAPI.getUsers();
+			if (response.status === 200) {
+				setUsers(response.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
 
-  useEffect(async ()=> {
-    try {
-      const response = await usersAPI.getUsers();
-      if (response.status === 200) {
-        setUsers(response.data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }, [])
+	useEffect(() => {
+		Validator({
+			form: '#signup',
+			errorMessage: 'form-message',
+			rules: [
+				Validator.isRequired('#username'),
+				Validator.isTrim('#username'),
+				Validator.isRequired('#email'),
+				Validator.isEmail('#email'),
+				Validator.isRequired('#password'),
+				Validator.isMinLength('#password', 6),
+				// Validator.isStrongPass("#password"),
+				Validator.isRequired('#passwordconfirm'),
+				Validator.isPasswordConfirm(
+					'#passwordconfirm',
+					() => document.querySelector('#password').value
+				),
+			],
+			onsubmit: async (data) => {
+				console.log(data);
+				const { username, passwordconfirm, email } = data;
+				let mailsLocal = [];
+				users.forEach((user) => {
+					mailsLocal.push(user.user_email);
+				});
 
-  useEffect(()=> {
-  
-    Validator({
-      form: "#signup",
-      errorMessage: "form-message",
-      rules: [
-        Validator.isRequired("#username"),
-        Validator.isTrim("#username"),
-        Validator.isRequired("#email"),
-        Validator.isEmail("#email"),
-        Validator.isRequired("#password"),
-        Validator.isMinLength("#password", 6),
-        // Validator.isStrongPass("#password"),
-        Validator.isRequired("#passwordconfirm"),
-        Validator.isPasswordConfirm("#passwordconfirm", () => document.querySelector("#password").value),
-      ],
-      onsubmit: async (data) => {
-        console.log(data)
-        const {username, passwordconfirm, email} = data;
-        let mailsLocal = []
-        users.forEach ((user) => {
-          mailsLocal.push(user.user_email)
-        })
+				const emailExits = mailsLocal.filter(
+					(mailLocal) => mailLocal === email
+				);
+				if (emailExits.length != 0) {
+					toast({
+						title: 'Thất bại',
+						message: 'Email đã tồn tại trên hệ thống!',
+						type: 'error',
+						show: true,
+					});
+				} else {
+					let userData = {
+						user_name: username,
+						user_fullname: '',
+						user_password: passwordconfirm,
+						user_email: email,
+						user_avatar: '',
+					};
+					try {
+						await usersAPI.addUser(userData);
+						toast({
+							title: 'Thành công',
+							message: 'Đăng ký tài khoản thành công!',
+							type: 'success',
+							show: true,
+						});
+						router.navigate('/login');
+					} catch (error) {
+						console.log(error);
+					}
+				}
+			},
+		});
+	});
 
-        const emailExits = mailsLocal.filter((mailLocal) => mailLocal === email)
-        if (emailExits.length != 0) {
-          toast({
-            title: "Thất bại",
-            message: "Email đã tồn tại trên hệ thống!",
-            type: "error",
-            show: true
-          })
-        } else {
-          let userData = {
-            user_name: username,
-            user_fullname: "",
-            user_password: passwordconfirm,
-            user_email: email,
-            user_avatar: ""
-          }
-          try {
-            await usersAPI.addUser(userData)
-            toast({
-              title: "Thành công",
-              message: "Đăng ký tài khoản thành công!",
-              type: "success",
-              show: true
-            })
-            router.navigate('/login')
-          } catch (error) {
-            console.log(error)
-          }
-        }
-      }
-    })
-  })
-
-  const template = `
+	const template = `
   <section class="vh-100" id="signup" style="background-color: #eee">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -188,8 +189,8 @@ const signUp = () => {
     </div>
   </div>
 </section>
-  `
-  return template
+  `;
+	return template;
 };
 
 export default signUp;
