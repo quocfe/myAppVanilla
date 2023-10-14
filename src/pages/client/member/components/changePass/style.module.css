@@ -1,0 +1,44 @@
+.change_password {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	margin: 5% auto;
+}
+
+.change_password .form_group {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+.change_password .form_group label {
+	margin-bottom: 10px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.change_password .form_group input {
+	outline: none;
+	border: 1px solid #d3d3d3;
+	height: 30px;
+	padding: 0px 15px;
+	line-height: 100%;
+}
+
+.change_password .btn_change {
+	background-color: #7c73e2;
+	width: 50%;
+	padding: 10px;
+	color: #fff;
+	margin: 0 auto;
+	border-radius: 8px;
+}
+
+.change_password .message {
+	color: #dc3545;
+	font-size: 14px;
+	margin-left: 10px;
+	margin-top: 4px;
+	text-align: center;
+}

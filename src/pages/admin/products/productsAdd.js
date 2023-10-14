@@ -1,37 +1,57 @@
-import { router, useEffect } from "@/utils";
-import style from "../css/admin.module.css";
-import productAPI from "@/api/productApi";
-import Swal from "sweetalert2";
-import { messageQuestion } from "@/components";
+import { router, useEffect, useState } from '@/utils';
+import productAPI from '@/api/productApi';
+import { messageQuestion } from '@/components';
+import { categoryApi, updateImgApi } from '@/api';
 
 const productsAdd = () => {
-  useEffect(() => {
-    const form = document.querySelector(".form");
-    const productName = document.querySelector("#productName");
-    const productPrice = document.querySelector("#productPrice");
-    const productDescription = document.querySelector("#productDescription");
-    const productImg = document.querySelector("#productImg");
-    const cateSelect = document.querySelector(".form-select");
+	const [cate, setCate] = useState([]);
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      try {
-        await productAPI.addProduct({
-          title:productName.value,
-          price:+productPrice.value,
-          description:  productDescription.value,
-          category: cateSelect.value,
-          image :  productImg.value
-      });
-      if (!(await messageQuestion("Add products"))) return
-      router.navigate("/admin&products");
-      } catch (error) {
-        console.log(error);
-      }
-    });
-  });
+	useEffect(async () => {
+		try {
+			const response = await categoryApi.getCategories();
+			setCate(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
 
-  const template = `
+	useEffect(() => {
+		const form = document.querySelector('.form');
+		const productName = document.querySelector('#productName');
+		const productPrice = document.querySelector('#productPrice');
+		const productDescription = document.querySelector('#productDescription');
+		const productImg = document.querySelector('#productImg');
+		const cateSelect = document.querySelector('.form-select');
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const urlImg = await handleUploadFile(productImg.files);
+			if (!(await messageQuestion('Add products'))) return;
+			try {
+				await productAPI.addProduct({
+					title: productName.value,
+					price: +productPrice.value,
+					description: productDescription.value,
+					category: cateSelect.value,
+					thumbnail: urlImg,
+				});
+				router.navigate('/admin&products');
+			} catch (error) {
+				console.log(error);
+			}
+		});
+	});
+
+	const handleUploadFile = async (file) => {
+		try {
+			const response = await updateImgApi.updateImg(file[0]);
+			return response.data.secure_url;
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const template = `
   <div class="addProducts">
   <form class="container form" enctype="multipart/form-data>
     <p class="title">Thêm mới sản phẩm</p>
@@ -96,9 +116,13 @@ const productsAdd = () => {
           >
           <select class="form-select " aria-label="">
             <option selected>Category</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            ${cate
+							.map(
+								(el) => `
+              <option value="${el.name}">${el.name}</option>
+            `
+							)
+							.join('')}
         </select>
         </div>
       </div>
@@ -121,7 +145,7 @@ const productsAdd = () => {
 </div>
   `;
 
-  return template;
+	return template;
 };
 
 export default productsAdd;

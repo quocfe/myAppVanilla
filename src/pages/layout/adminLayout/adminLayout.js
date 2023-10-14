@@ -1,20 +1,23 @@
-import { useEffect } from "@/utils";
-import style from "../../admin/css/admin.module.css";
+import { useEffect } from '@/utils';
+import style from '../../admin/css/admin.module.css';
 
 const adminLayout = (content) => {
+	useEffect(() => {
+		const bodyTag = document.querySelector('body');
+		if (
+			document.querySelector('#signin') ||
+			document.querySelector('#signup') ||
+			document.querySelector('#admin')
+		) {
+			bodyTag.querySelector('header').style.display = 'none';
+			bodyTag.querySelector('footer').style.display = 'none';
+		} else {
+			bodyTag.querySelector('header').style.display = 'block';
+			bodyTag.querySelector('footer').style.display = 'block';
+		}
+	});
 
-  useEffect(() => {
-    const bodyTag = document.querySelector("body")
-    if (document.querySelector("#signin") || document.querySelector("#signup") || document.querySelector("#admin")) {
-      bodyTag.querySelector('header').style.display = "none"
-      bodyTag.querySelector('footer').style.display = "none"
-    } else {
-      bodyTag.querySelector('header').style.display = "block"
-      bodyTag.querySelector('footer').style.display = "block"
-    }
-  })
-
-  const template = `
+	const template = `
   <div class=${style.admin} id="admin">
   <div class=${style.adminLayout}>
     <div class=${style.nav}>
@@ -48,10 +51,10 @@ const adminLayout = (content) => {
         >
           <ul class=${style.accordionBody}>
             <li>
-              <a href="/admin&products" >Danh sách sản phẩm</a>
+              <a href="/admin/products" >Danh sách sản phẩm</a>
             </li>
             <li>
-              <a href="/admin&productsAdd" >Thêm sản phẩm</a>
+              <a href="/admin/products/add" >Thêm sản phẩm</a>
             </li>
           </ul>
         </div>
@@ -88,6 +91,40 @@ const adminLayout = (content) => {
           </ul>
         </div>
       </ul>
+
+      <ul lass="accordion accordion-flush" id="accordionFlushMember">
+        <li class="accordionItem">
+          <a
+            class="accordion-header"
+            id="flush-headingMember"
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseMember"
+            aria-expanded="false"
+            aria-controls="flush-collapseMember"
+            >Thành viên</a
+          >
+          <ion-icon name="cart-outline"></ion-icon>
+        </li>
+        <div
+          id="flush-collapseMember"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingMember"
+          data-bs-parent="#accordionFlushMember"
+        >
+          <ul class=${style.accordionBody}>
+            <li>
+              <a href="/admin/user" >Danh sách thành viên</a>
+            </li>
+            <li>
+              <a href="/admin/user/add" >Thêm thành viên</a>
+            </li>
+          </ul>
+        </div>
+      </ul>
+
+
     </div>
     <div class=${style.adminMain}>
       <div class=${style.adminHeader}>
@@ -101,8 +138,8 @@ const adminLayout = (content) => {
     </div>
   </div>
 </div>
-  `
-  return template
+  `;
+	return template;
 };
 
 export default adminLayout;

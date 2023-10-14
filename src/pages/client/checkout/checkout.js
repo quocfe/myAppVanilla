@@ -1,254 +1,307 @@
-import {orderAPI,orderDetailsAPI, productAPI, provinceApi } from "@/api"
-import { messageQuestion } from "@/components";
-import { useLocalStorage } from "@/hooks";
-import { Validator } from "@/lib";
-import { useEffect, useState } from "@/utils";
-import  getCurrentDay from "@/utils/fn";
+import {
+	orderAPI,
+	orderDetailsAPI,
+	productAPI,
+	provinceApi,
+	shippingApi,
+	usersAPI,
+} from '@/api';
+import { messageQuestion } from '@/components';
+import { useLocalStorage } from '@/hooks';
+import { Validator } from '@/lib';
+import { router, useEffect, useState } from '@/utils';
+import getCurrentDay from '@/utils/fn';
 
 const checkout = () => {
-  const [products, setProducts] = useState([]);
-  const [idLocal, setId] = useLocalStorage("id", []);
-  const [provinces, setProvinces] = useState([]);
-  const [districts, setDistricts] = useState([]);
-  const [wards, setWards] = useState([]);
+	const [products, setProducts] = useState([]);
+	const [user, setUser] = useState({});
+	const [idLocal] = useLocalStorage('id', []);
+	const [userLocal] = useLocalStorage('user');
+	const [provinces, setProvinces] = useState([]);
+	const [districts, setDistricts] = useState([]);
+	const [wards, setWards] = useState([]);
 
+	useEffect(async () => {
+		const currentID = idLocal ?? '';
+		let uniqueArrayID = new Set();
+		let newArrPrd = [];
+		for (const id of currentID) {
+			if (!uniqueArrayID.has(id)) {
+				try {
+					const response = await productAPI.getProduct(id);
+					newArrPrd.push(response.data);
+					uniqueArrayID.add(id);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		}
+		try {
+			const response = await usersAPI.getUser(userLocal);
+			setUser(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+		setProducts(newArrPrd);
+	}, []);
 
-  useEffect(()=> {
-    const currentID = idLocal ?? '';
-    (async()=> {
-      let uniqueArrayID = new Set()
-      let newArrPrd = [];
-      for (const id of currentID) {
-        if (!uniqueArrayID.has(id)) {
-          const response = await productAPI.getProduct(id);
-          newArrPrd.push(response.data);
-          uniqueArrayID.add(id)
-        } 
-      }
-      setProducts(newArrPrd)
-    })()
-  }, [])
+	// get list Provinces, District, Ward
+	useEffect(async () => {
+		try {
+			const response = await provinceApi.getProvince();
+			if (response.status === 200) {
+				setProvinces(response.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		try {
+			const response = await provinceApi.getDistrict();
+			if (response.status === 200) {
+				setDistricts(response.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		try {
+			const response = await provinceApi.getWard();
+			if (response.status === 200) {
+				setWards(response.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
 
+	useEffect(() => {
+		const selectForms = document.querySelectorAll('.select-form');
+		const btnDropDowns = document.querySelectorAll('#shop .dropdown-toggle');
+		const checkboxStyle = document.querySelectorAll('.checkbox-style');
+		const totalCart = document.querySelector('.totalCart');
+		const subTotalCart = document.querySelector('.subTotalCart');
+		const els = document.querySelectorAll('.el');
 
-  // get list Provinces, District, Ward
-  useEffect(async ()=> {
-    try {
-      const response = await provinceApi.getProvince();
-      if (response.status === 200) {
-        setProvinces(response.data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-    try {
-      const response = await provinceApi.getDistrict();
-      if (response.status === 200) {
-        setDistricts(response.data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-    try {
-      const response = await provinceApi.getWard();
-      if (response.status === 200) {
-        setWards(response.data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }, [])
+		let currentOpenBtn = null;
+		let prevOpenBox = null;
+		let totalOrder = 0;
 
-  useEffect(()=> {
-      const selectForms = document.querySelectorAll(".select-form");
-      const btnDropDowns = document.querySelectorAll("#shop .dropdown-toggle");
-      const checkboxStyle = document.querySelectorAll(".checkbox-style");
-      const totalCart = document.querySelector(".totalCart");
-      const subTotalCart = document.querySelector(".subTotalCart");
-      const els = document.querySelectorAll(".el");
+		btnDropDowns.forEach((btn) => {
+			btn.addEventListener('click', handleToggle);
+		});
 
-      let currentOpenBtn = null;
-      let prevOpenBox = null;
-      let totalOrder = 0;
-      
-      btnDropDowns.forEach((btn) => {
-        btn.addEventListener('click', handleToggle);
-      });
-      
-      function handleToggle(e) {
-        const currentBtn = e.target;
-        const nextEl = currentBtn.nextElementSibling;
-      
-        if (currentOpenBtn && currentOpenBtn !== currentBtn) {
-          const previousEl = currentOpenBtn.nextElementSibling;
-          currentOpenBtn.classList.remove("show");
-          previousEl.classList.remove("show");
-        }
-      
-        currentBtn.classList.toggle("show");
-        nextEl.classList.toggle("show");
-      
-        currentOpenBtn = currentBtn;
-      }
-      
-      checkboxStyle.forEach((checkbox) => {
-        checkbox.addEventListener('click', function (e) {
-          if (prevOpenBox && prevOpenBox !== e.currentTarget) {
-            prevOpenBox?.classList.remove('checked');
-          };
-        
-          e.currentTarget.classList.add('checked');
-        
-          prevOpenBox = e.currentTarget;
-        })
-      });
-      
-      selectForms.forEach(selectForm => {
-          selectForm.addEventListener('click', function () {
-            const selectIcon = this.querySelector(".select-icon");
-              if (this.classList.contains("show")) {
-                  this.classList.remove("show");
-                  this.classList.add("hidden");
-                  selectIcon.setAttribute("class", "fa-solid fa-chevron-down select-icon");
-              } else {
-                  this.classList.remove("hidden");
-                  this.classList.add("show");
-                  selectIcon.setAttribute("class", "fa-solid fa-chevron-up select-icon");
-              }
-          });
-      });
+		function handleToggle(e) {
+			const currentBtn = e.target;
+			const nextEl = currentBtn.nextElementSibling;
 
-      els.forEach((el) => {
-        const number = el.querySelector(".total");
-        let numberValue = number.dataset.price;
-        totalOrder += +numberValue
-        totalCart.innerHTML =  `$${totalOrder.toFixed(2)}`;
-        subTotalCart.innerHTML = `$${totalOrder.toFixed(2)}`;
-      });
+			if (currentOpenBtn && currentOpenBtn !== currentBtn) {
+				const previousEl = currentOpenBtn.nextElementSibling;
+				currentOpenBtn.classList.remove('show');
+				previousEl.classList.remove('show');
+			}
 
-      Validator({
-        form: "#checkout",
-        errorMessage: "form-message",
-        rules: [
-          Validator.isRequired("#c_fname"),
-          Validator.isRequired("#c_lname"),
-          Validator.isRequired("#c_email_address"),
-          Validator.isEmail("#c_email_address"),
-          Validator.isRequired("#c_phone"),
-          Validator.isNumberPhone("#c_phone"),
-          Validator.isRequired("#province"),
-          Validator.isRequired("#district"),
-          Validator.isRequired("#ward"),
-          Validator.isRequired("#c_stress"),
+			currentBtn.classList.toggle('show');
+			nextEl.classList.toggle('show');
 
-        ],
-        onsubmit: async  (data) => {
-          const created_date = getCurrentDay()
-          const {c_email_address, c_fname, c_lname, c_order_notes, c_phone, district, province, ward, c_stress} = data
-          const user_address = `${c_stress} - ${ward} - ${district} - ${province}`
-          
-          
-          const dataOrder = {
-            user_id: "2",
-            user_address,
-            user_email: c_email_address,
-            user_phone_number: c_phone,
-            created_date,
-            status: "Delivered",
-          }
-          if (!(await messageQuestion("Thanh toán"))) return
-          await orderAPI.addOrder(dataOrder)
+			currentOpenBtn = currentBtn;
+		}
 
-          products.forEach( async ({id, price}) => {
-            const quantity = idLocal.filter((idlocal) => idlocal === id).length;
-            const total = id * price
-            const dataDetailOrder = {
-              orders_id: 1,
-              product_id: id,
-              quantity,
-              unit_price: price,
-              total
-            }
-            await orderDetailsAPI.addOrderDetails(dataDetailOrder)
-          })
-        }
-      });
+		// ** handle checkbox method shipping
+		const value_method = document.querySelector('.value_method');
+		checkboxStyle.forEach((checkbox) => {
+			checkbox.addEventListener('click', function (e) {
+				if (prevOpenBox && prevOpenBox !== e.currentTarget) {
+					prevOpenBox?.classList.remove('checked');
+				}
 
-  })
+				e.currentTarget.classList.add('checked');
+				value_method.setAttribute(
+					'value',
+					e.currentTarget.querySelector('.checkbox-input').getAttribute('name')
+				);
+				prevOpenBox = e.currentTarget;
+			});
+		});
+		// ** end  handle checkbox method shipping
 
+		// ** handle select option
+		selectForms.forEach((selectForm) => {
+			selectForm.addEventListener('click', function () {
+				const selectIcon = this.querySelector('.select-icon');
+				if (this.classList.contains('show')) {
+					this.classList.remove('show');
+					this.classList.add('hidden');
+					selectIcon.setAttribute(
+						'class',
+						'fa-solid fa-chevron-down select-icon'
+					);
+				} else {
+					this.classList.remove('hidden');
+					this.classList.add('show');
+					selectIcon.setAttribute(
+						'class',
+						'fa-solid fa-chevron-up select-icon'
+					);
+				}
+			});
+		});
+		// ** end handle select option
 
-  useEffect(()=> {
-    // * select province
-    const provinceBtns = document.querySelectorAll(".select-province");
-    provinceBtns.forEach((pr) => {
-      pr.addEventListener('click', handleSelectProvince)
-    });
+		// ** calc total
+		els.forEach((el) => {
+			const number = el.querySelector('.total');
+			let numberValue = number.dataset.price;
+			totalOrder += +numberValue;
+			totalCart.innerHTML = `$${totalOrder.toFixed(2)}`;
+			subTotalCart.innerHTML = `$${totalOrder.toFixed(2)}`;
+		});
+		// ** end calc total
+		// ** handle validation
+		Validator({
+			form: '#checkout',
+			errorMessage: 'form-message',
+			rules: [
+				Validator.isRequired('#c_fname'),
+				Validator.isRequired('#c_fname'),
+				Validator.isRequired('#c_email_address'),
+				Validator.isEmail('#c_email_address'),
+				Validator.isRequired('#c_phone'),
+				Validator.isNumberPhone('#c_phone'),
+				Validator.isRequired('#province'),
+				Validator.isRequired('#district'),
+				Validator.isRequired('#ward'),
+				Validator.isRequired('#c_stress'),
+			],
+			onsubmit: async (data) => {
+				const created_date = getCurrentDay();
+				const {
+					c_email_address,
+					c_fname,
+					c_phone,
+					c_order_notes,
+					district,
+					province,
+					ward,
+					c_stress,
+				} = data;
 
-    function handleSelectProvince () {
-      const selected = document.querySelector(".selected-province");
-      const provinceHidden = document.querySelector(".province-hidden");
-      let text = this.innerText;
-      selected.innerHTML = text;
-      let idProvince = this.dataset.province;
-      provinceHidden.setAttribute('value', text)
-      selectDistrict(idProvince)
-    }
+				const user_address = `${c_stress} - ${ward} - ${district} - ${province}`;
 
-    function selectDistrict (idProvince) {
-      const districtTag = document.querySelector(".district");
-      const filterDistrict = districts.filter((el) => el.province_code === +idProvince)
-      const district = 
-      filterDistrict.map((di) => 
-        ` 
+				const dataOrder = {
+					user_id: userLocal,
+					user_address,
+					user_email: c_email_address,
+					user_phone_number: c_phone,
+					created_date,
+					status: 'Delivered',
+				};
+				if (!(await messageQuestion('Thanh toán'))) return;
+				let sumTotal = 0;
+				const order = await orderAPI.addOrder(dataOrder);
+				products.forEach(async ({ id, price }) => {
+					const quantity = idLocal.filter((idlocal) => idlocal === id).length;
+					const total = quantity * price;
+					sumTotal += total;
+					const dataDetailOrder = {
+						orders_id: order.data.id,
+						product_id: id,
+						quantity,
+						unit_price: price,
+						total,
+					};
+					await orderDetailsAPI.addOrderDetails(dataDetailOrder);
+				});
+				const dataShipping = {
+					orders_id: order.data.id,
+					username: c_fname,
+					address: user_address,
+					method: value_method.value,
+					status: 'Đang gửi',
+					note: c_order_notes ? c_order_notes : '',
+					created_date,
+					totalOrder: sumTotal,
+				};
+				await shippingApi.addShipping(dataShipping);
+				localStorage.setItem('orderID', JSON.stringify(order.data.id));
+				localStorage.removeItem('id');
+				router.navigate('/cart/checkout/success');
+			},
+		});
+		// ** end handle validation
+	});
+
+	useEffect(() => {
+		// * select province
+		const provinceBtns = document.querySelectorAll('.select-province');
+		provinceBtns.forEach((pr) => {
+			pr.addEventListener('click', handleSelectProvince);
+		});
+
+		function handleSelectProvince() {
+			const selected = document.querySelector('.selected-province');
+			const provinceHidden = document.querySelector('.province-hidden');
+			let text = this.innerText;
+			selected.innerHTML = text;
+			let idProvince = this.dataset.province;
+			provinceHidden.setAttribute('value', text);
+			selectDistrict(idProvince);
+		}
+
+		function selectDistrict(idProvince) {
+			const districtTag = document.querySelector('.district');
+			const filterDistrict = districts.filter(
+				(el) => el.province_code === +idProvince
+			);
+			const district = filterDistrict
+				.map(
+					(di) =>
+						` 
         <p class="select-district" data-district = ${di.code} >${di.name}</p>
         
-        ` 
-      ).join("");
-      districtTag.innerHTML = district
-      
-      const districtBtn = document.querySelectorAll(".select-district");
-      districtBtn.forEach((di) => {
-        di.addEventListener('click', handleSelectDistrict)
-      })
+        `
+				)
+				.join('');
+			districtTag.innerHTML = district;
 
-    }
+			const districtBtn = document.querySelectorAll('.select-district');
+			districtBtn.forEach((di) => {
+				di.addEventListener('click', handleSelectDistrict);
+			});
+		}
 
-    function handleSelectDistrict () {
-      const selected = document.querySelector(".selected-district");
-      const districtHidden = document.querySelector(".district-hidden")
-      let text = this.innerText;
-      selected.innerHTML = text;
-      let idDistrict = this.dataset.district;
-      districtHidden.setAttribute('value', text)
-      selectWard(idDistrict)
-    }
+		function handleSelectDistrict() {
+			const selected = document.querySelector('.selected-district');
+			const districtHidden = document.querySelector('.district-hidden');
+			let text = this.innerText;
+			selected.innerHTML = text;
+			let idDistrict = this.dataset.district;
+			districtHidden.setAttribute('value', text);
+			selectWard(idDistrict);
+		}
 
-    function selectWard (idWard) {
-      const wardTag = document.querySelector(".ward");
-      const filterWard = wards.filter((el) => el.district_code === +idWard)
-      const ward = filterWard.map((wa) => 
-      ` <p class="select-ward" >${wa.name}</p>` 
-      ).join("");
-      wardTag.innerHTML = ward
+		function selectWard(idWard) {
+			const wardTag = document.querySelector('.ward');
+			const filterWard = wards.filter((el) => el.district_code === +idWard);
+			const ward = filterWard
+				.map((wa) => ` <p class="select-ward" >${wa.name}</p>`)
+				.join('');
+			wardTag.innerHTML = ward;
 
-      const wardBtn = document.querySelectorAll(".select-ward");
-      wardBtn.forEach((wa) => {
-        wa.addEventListener('click', handleSelectWard)
-      })
-    }
+			const wardBtn = document.querySelectorAll('.select-ward');
+			wardBtn.forEach((wa) => {
+				wa.addEventListener('click', handleSelectWard);
+			});
+		}
 
+		function handleSelectWard() {
+			const selected = document.querySelector('.selected-ward');
+			const wardHidden = document.querySelector('.ward-hidden');
+			let text = this.innerText;
+			selected.innerHTML = text;
+			wardHidden?.setAttribute('value', text);
+		}
+	});
 
-    function handleSelectWard () {
-      const selected = document.querySelector(".selected-ward");
-      const wardHidden = document.querySelector(".ward-hidden");
-      console.log(wardHidden)
-      let text = this.innerText;
-      selected.innerHTML = text;
-      wardHidden?.setAttribute('value', text)
-    }
-  
-  })
-  
-  const template = `
+	const template = `
 
   <form id="checkout" method="post">
     <div class="container">
@@ -259,31 +312,18 @@ const checkout = () => {
           <div class="p-1 p-lg-5 border">
             
             <div class=" row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-12">
                 <label for="c_fname" class="text-black"
-                  >First Name <span class="text-danger">*</span></label
+                  >Người nhận hàng <span class="text-danger">*</span></label
                 >
                 <input
                   type="text"
                   class="form-control"
                   id="c_fname"
                   name="c_fname"
-                  fdprocessedid="dsgcm3"
-                  placeholder="First Name"
-                />
-                <span class="form-message"></span>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="c_lname" class="text-black"
-                  >Last Name <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="c_lname"
-                  name="c_lname"
                   fdprocessedid="ncsc9qg"
-                  placeholder="Last Name"
+                  placeholder="Nguyễn Văn A"
+                  value="${user.user_name ? user.user_name : 'Nguyễn Văn A'}"
                 />
                 <span class="form-message"></span>
               </div>
@@ -301,9 +341,13 @@ const checkout = () => {
                     <i class="fa-solid fa-chevron-down select-icon"></i>
                   </span>
                   <div class="province select form-control">
-                    ${provinces.map((pr)=> `
+                    ${provinces
+											.map(
+												(pr) => `
                     <p class="select-province" data-province = ${pr.code} >${pr.name}</p>
-                    `).join("")}
+                    `
+											)
+											.join('')}
                   </div>
                 </div>
                 
@@ -366,6 +410,9 @@ const checkout = () => {
                   name="c_email_address"
                   fdprocessedid="gih485"
                   placeholder="abc@domain.com"
+                  value="${
+										user.user_email ? user.user_email : 'abc@domain.com'
+									}"
                 />
                 <span class="form-message"></span>
               </div>
@@ -389,14 +436,8 @@ const checkout = () => {
               <label for="c_order_notes" class="text-black"
                 >Order Notes</label
               >
-              <textarea
-                name="c_order_notes"
-                id="c_order_notes"
-                cols="30"
-                rows="5"
-                class="form-control"
-                placeholder="Write your notes here..."
-              ></textarea>
+              <input  name="c_order_notes" id="c_order_notes"  
+              class="form-control" placeholder="Write your notes here..."/> 
             </div>
           </div>
         </div>
@@ -442,14 +483,26 @@ const checkout = () => {
                     </tr>
                   </thead>
                   <tbody>
-                  ${products.map((el)=> `
+                  ${products
+										.map(
+											(el) => `
                     <tr class="el">
-                      <td class="el-quantity" data-quantity="${idLocal.filter(id => id === el.id).length}">
-                        ${el.title}<strong class="mx-2">x</strong>${idLocal.filter(id => id === el.id).length}
+                      <td class="el-quantity" data-quantity="${
+												idLocal.filter((id) => id === el.id).length
+											}">
+                        ${el.title}<strong class="mx-2">x</strong>${
+												idLocal.filter((id) => id === el.id).length
+											}
                       </td>
-                      <td data-price="${(el.price * idLocal.filter(id => id === el.id).length)}" class="total">$${(el.price * idLocal.filter(id => id === el.id).length).toFixed(2)}</td>
+                      <td data-price="${
+												el.price * idLocal.filter((id) => id === el.id).length
+											}" class="total">$${(
+												el.price * idLocal.filter((id) => id === el.id).length
+											).toFixed(2)}</td>
                     </tr>
-                    `).join("")}
+                    `
+										)
+										.join('')}
                     <tr>
                       <td class="text-black font-weight-bold">
                         <strong>Cart Subtotal</strong>
@@ -468,6 +521,7 @@ const checkout = () => {
                 </table>
 
                 <div class="row payment-method mb-3">
+                  <input class="value_method" value="" hidden />
                   <div class="col-lg-12 mb-3">
                     <label for="cod" class="checkbox-style ">
                       <input
@@ -581,9 +635,8 @@ const checkout = () => {
     </div>
     </div>
   </form>
-  `
-  return template
-  
+  `;
+	return template;
 };
 
 export default checkout;

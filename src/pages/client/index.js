@@ -7,6 +7,9 @@ import checkout from './checkout/checkout';
 import signIn from './signIn/signIn';
 import signUp from './signUp/signUp';
 import detail from './detail/detail';
+import member from './member/member';
+import successPay from './successPay/successPay';
+import invoice from './invoice/invoice';
 
 export {
 	homepage,
@@ -18,4 +21,7 @@ export {
 	signIn,
 	signUp,
 	detail,
+	member,
+	successPay,
+	invoice,
 };

@@ -1,0 +1,35 @@
+.member_sidebar {
+	background-color: #f8f9fa;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+.member_sidebar li {
+	margin-bottom: 10px;
+}
+
+.member_sidebar li a {
+	padding: 8px 14px !important;
+	display: block;
+	border-radius: 8px;
+	cursor: pointer;
+	color: #000;
+}
+
+.member_sidebar li a.active {
+	background-color: var(--color-primary);
+	color: #fff !important;
+}
+
+.member_sidebar li a:hover {
+	background-color: var(--color-primary);
+	color: #fff !important;
+}
+
+.member_content {
+	background-color: #f8f9fa;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-left: 1px solid #ddd;
+	padding: 24px;
+}

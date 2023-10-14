@@ -1,51 +1,49 @@
-import productAPI from "@/api/productApi";
-import { messageQuestion } from "@/components";
-import { router, useEffect, useState } from "@/utils";
-import Swal from "sweetalert2";
+import productAPI from '@/api/productApi';
+import { messageQuestion } from '@/components';
+import { router, useEffect, useState } from '@/utils';
 
 const productsEdit = (data) => {
-  const productID = data.id;
-  const [product, setProduct] = useState({});
+	const productID = data.id;
+	const [product, setProduct] = useState({});
 
+	useEffect(async () => {
+		try {
+			const response = await productAPI.getProduct(productID);
+			if (response.status === 200) {
+				setProduct(response.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
 
-  useEffect( async ()=> {
-    try {
-      const response = await productAPI.getProduct(productID);
-      if (response.status === 200) {
-        setProduct(response.data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }, [])
+	useEffect(() => {
+		const form = document.querySelector('.form');
+		const productName = document.querySelector('#productName');
+		const productPrice = document.querySelector('#productPrice');
+		const productDescription = document.querySelector('#productDescription');
+		const productImg = document.querySelector('#productImg');
+		const cateSelect = document.querySelector('.form-select');
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			if (!(await messageQuestion('Update product'))) return;
+			try {
+				await productAPI.updateProduct({
+					id: productID,
+					title: productName.value,
+					price: +productPrice.value,
+					description: productDescription.value,
+					category: cateSelect.value,
+					image: productImg.value,
+				});
+				router.navigate('/admin&products');
+			} catch (error) {
+				console.log(error);
+			}
+		});
+	});
 
-  useEffect(() => {
-    const form = document.querySelector(".form");
-    const productName = document.querySelector("#productName");
-    const productPrice = document.querySelector("#productPrice");
-    const productDescription = document.querySelector("#productDescription");
-    const productImg = document.querySelector("#productImg");
-    const cateSelect = document.querySelector(".form-select");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      try {
-        await productAPI.updateProduct({
-          id: productID,
-          title:productName.value,
-          price:+productPrice.value,
-          description:  productDescription.value,
-          category: cateSelect.value,
-          image :  productImg.value
-      });
-      if (!(await messageQuestion("Update product"))) return
-        router.navigate("/admin&products")
-      } catch (error) {
-        console.log(error)
-      }
-    });
-  })
-
-  const template = `
+	const template = `
   <div class="addProducts">
   <form class="container form" enctype="multipart/form-data>
     <p class="title">Cập nhật sản phẩm</p>
@@ -61,7 +59,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="id"
             placeholder="Auto increment"
-            value="${product.id ?? ""}"
+            value="${product.id ?? ''}"
           />
         </div>
       </div>
@@ -75,7 +73,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="productName"
             placeholder=""
-            value="${product.title ?? ""}"
+            value="${product.title ?? ''}"
           />
         </div>
       </div>
@@ -89,7 +87,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="productPrice"
             placeholder=""
-            value="${product.price ?? ""}"
+            value="${product.price ?? ''}"
           />
         </div>
       </div>
@@ -103,7 +101,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="productDescription"
             placeholder=""
-            value="${product.description ?? ""}"
+            value="${product.description ?? ''}"
           />
         </div>
       </div>
@@ -113,7 +111,7 @@ const productsEdit = (data) => {
             >Category</label
           >
           <select class="form-select " aria-label="">
-            <option selected>${product.category ?? "Category"}</option>
+            <option selected>${product.category ?? 'Category'}</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -130,7 +128,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="productImg"
             placeholder="name@example.com"
-            value="${product.image ?? ""}"
+            value="${product.image ?? ''}"
           />
         </div>
       </div>
@@ -140,7 +138,7 @@ const productsEdit = (data) => {
 </div>
   `;
 
-  return template
+	return template;
 };
 
 export default productsEdit;

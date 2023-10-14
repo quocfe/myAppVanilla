@@ -1,417 +1,524 @@
 {
-	"products": [
-		{
-			"id": 6,
-			"title": "MacBook Pro",
-			"description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-			"price": 600,
-			"brand": "Apple",
-			"category": "laptops",
-			"thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png"
-		},
-		{
-			"id": 7,
-			"title": "Samsung Galaxy Book",
-			"description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-			"price": 400,
-			"brand": "Samsung",
-			"category": "laptops",
-			"thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
-		},
-		{
-			"id": 8,
-			"title": "Microsoft Surface Laptop 4",
-			"description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-			"price": 949,
-			"brand": "Microsoft Surface",
-			"category": "laptops",
-			"thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
-		},
-		{
-			"id": 9,
-			"title": "Infinix INBOOK",
-			"description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-			"price": 234,
-			"brand": "Infinix",
-			"category": "laptops",
-			"thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
-		},
-		{
-			"id": 10,
-			"title": "HP Pavilion 15-DK1056WM",
-			"description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-			"price": 423,
-			"brand": "HP Pavilion",
-			"category": "laptops",
-			"thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
-		},
-		{
-			"id": 11,
-			"title": "perfume Oil",
-			"description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
-			"price": 555,
-			"brand": "Impression of Acqua Di Gio",
-			"category": "fragrances",
-			"thumbnail": "https://i.dummyjson.com/data/products/11/thumbnail.jpg"
-		},
-		{
-			"id": 12,
-			"title": "Brown Perfume",
-			"description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
-			"price": 111,
-			"brand": "Royal_Mirage",
-			"category": "fragrances",
-			"thumbnail": "https://i.dummyjson.com/data/products/12/thumbnail.jpg"
-		},
-		{
-			"id": 13,
-			"title": "Fog Scent Xpressio Perfume",
-			"description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
-			"price": 333,
-			"brand": "Fog Scent Xpressio",
-			"category": "fragrances",
-			"thumbnail": "https://i.dummyjson.com/data/products/13/thumbnail.webp"
-		},
-		{
-			"id": 14,
-			"title": "Non-Alcoholic Concentrated Perfume Oil",
-			"description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
-			"price": 234,
-			"brand": "Al Munakh",
-			"category": "fragrances",
-			"thumbnail": "https://i.dummyjson.com/data/products/14/thumbnail.jpg"
-		},
-		{
-			"id": 15,
-			"title": "Eau De Perfume Spray",
-			"description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
-			"price": 100,
-			"brand": "Lord - Al-Rehab",
-			"category": "fragrances",
-			"thumbnail": "https://i.dummyjson.com/data/products/15/thumbnail.jpg"
-		},
-		{
-			"id": 16,
-			"title": "Hyaluronic Acid Serum",
-			"description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
-			"price": 638,
-			"brand": "L'Oreal Paris",
-			"category": "skincare",
-			"thumbnail": "https://i.dummyjson.com/data/products/16/thumbnail.jpg"
-		},
-		{
-			"id": 17,
-			"title": "Tree Oil 30ml",
-			"description": "Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria,",
-			"price": 444,
-			"brand": "Hemani Tea",
-			"category": "skincare",
-			"thumbnail": "https://i.dummyjson.com/data/products/17/thumbnail.jpg"
-		},
-		{
-			"id": 18,
-			"title": "Oil Free Moisturizer 100ml",
-			"description": "Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.",
-			"price": 998,
-			"brand": "Dermive",
-			"category": "skincare",
-			"thumbnail": "https://i.dummyjson.com/data/products/18/thumbnail.jpg"
-		},
-		{
-			"id": 19,
-			"title": "Skin Beauty Serum.",
-			"description": "Product name: rorec collagen hyaluronic acid white face serum riceNet weight: 15 m",
-			"price": 500,
-			"brand": "ROREC White Rice",
-			"category": "skincare",
-			"thumbnail": "https://i.dummyjson.com/data/products/19/thumbnail.jpg"
-		},
-		{
-			"id": 20,
-			"title": "Freckle Treatment Cream- 15gm",
-			"description": "Fair & Clear is Pakistan's only pure Freckle cream which helpsfade Freckles, Darkspots and pigments. Mercury level is 0%, so there are no side effects.",
-			"price": 123,
-			"brand": "Fair & Clear",
-			"category": "skincare",
-			"thumbnail": "https://i.dummyjson.com/data/products/20/thumbnail.jpg"
-		},
-		{
-			"id": 21,
-			"title": "- Daal Masoor 500 grams",
-			"description": "Fine quality Branded Product Keep in a cool and dry place",
-			"price": 100,
-			"brand": "Saaf & Khaas",
-			"category": "groceries",
-			"thumbnail": "https://i.dummyjson.com/data/products/21/thumbnail.png"
-		},
-		{
-			"id": 22,
-			"title": "Elbow Macaroni - 400 gm",
-			"description": "Product details of Bake Parlor Big Elbow Macaroni - 400 gm",
-			"price": 200,
-			"brand": "Bake Parlor Big",
-			"category": "groceries",
-			"thumbnail": "https://i.dummyjson.com/data/products/22/thumbnail.jpg"
-		},
-		{
-			"id": 23,
-			"title": "Orange Essence Food Flavou",
-			"description": "Specifications of Orange Essence Food Flavour For Cakes and Baking Food Item",
-			"price": 300,
-			"brand": "Baking Food Items",
-			"category": "groceries",
-			"thumbnail": "https://i.dummyjson.com/data/products/23/thumbnail.jpg"
-		},
-		{
-			"id": 24,
-			"title": "cereals muesli fruit nuts",
-			"description": "original fauji cereal muesli 250gm box pack original fauji cereals muesli fruit nuts flakes breakfast cereal break fast faujicereals cerels cerel foji fouji",
-			"price": 499,
-			"brand": "fauji",
-			"category": "groceries",
-			"thumbnail": "https://i.dummyjson.com/data/products/24/thumbnail.jpg"
-		},
-		{
-			"title": "MacBook Pro 3",
-			"description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-			"price": 500,
-			"brand": "Apple",
-			"category": "laptops",
-			"thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
-			"id": 25
-		},
-		{
-			"id": 26,
-			"title": "Plant Hanger For Home",
-			"description": "Boho Decor Plant Hanger For Home Wall Decoration Macrame Wall Hanging Shelf",
-			"price": 499,
-			"brand": "Boho Decor",
-			"category": "home-decoration",
-			"thumbnail": "https://i.dummyjson.com/data/products/26/thumbnail.jpg"
-		},
-		{
-			"id": 27,
-			"title": "Flying Wooden Bird",
-			"description": "Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm",
-			"price": 499,
-			"brand": "Flying Wooden",
-			"category": "home-decoration",
-			"thumbnail": "https://i.dummyjson.com/data/products/27/thumbnail.webp"
-		},
-		{
-			"id": 28,
-			"title": "3D Embellishment Art Lamp",
-			"description": "3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)",
-			"price": 499,
-			"brand": "LED Lights",
-			"category": "home-decoration",
-			"thumbnail": "https://i.dummyjson.com/data/products/28/thumbnail.jpg"
-		},
-		{
-			"id": 29,
-			"title": "Handcraft Chinese style",
-			"description": "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
-			"price": 499,
-			"brand": "luxury palace",
-			"category": "home-decoration",
-			"thumbnail": "https://i.dummyjson.com/data/products/29/thumbnail.webp"
-		},
-		{
-			"id": 30,
-			"title": "Key Holder",
-			"description": "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality",
-			"price": 499,
-			"brand": "Golden",
-			"category": "home-decoration",
-			"thumbnail": "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
-		}
-	],
-	"categories": [
-		{
-			"id": 2,
-			"name": "laptops"
-		},
-		{
-			"id": 3,
-			"name": "fragrances"
-		},
-		{
-			"id": 4,
-			"name": "skincare"
-		},
-		{
-			"id": 5,
-			"name": "groceries"
-		},
-		{
-			"id": 6,
-			"name": "home-decoration"
-		}
-	],
-	"orders": [
-		{
-			"id": 1,
-			"user_id": "1",
-			"user_address": "Address of User 97",
-			"user_email": "user97@example.com",
-			"user_phone_number": "123-456-7890",
-			"created_date": "2023-09-28T12:00:00Z",
-			"status": "Delivered"
-		},
-		{
-			"user_id": "2",
-			"user_address": "Ha noi",
-			"user_email": "hanoi@example.com",
-			"user_phone_number": "0383995412",
-			"created_date": "2023-09-28T12:00:00Z",
-			"status": "Delivered",
-			"id": 2
-		},
-		{
-			"user_id": "2",
-			"user_address": "undefined - Phường Hòa Minh - Quận Liên Chiểu - Thành phố Đà Nẵng",
-			"user_email": "Luti0510@gmail.com",
-			"user_phone_number": "0383995412",
-			"created_date": "03-10-2023",
-			"status": "Delivered",
-			"id": 3
-		},
-		{
-			"user_id": "2",
-			"user_address": "Doi Can - Phường Phúc Tân - Quận Hoàn Kiếm - Thành phố Hà Nội",
-			"user_email": "Luti0510@gmail.com",
-			"user_phone_number": "0383995412",
-			"created_date": "03-10-2023",
-			"status": "Delivered",
-			"id": 4
-		},
-		{
-			"user_id": "2",
-			"user_address": "Doi Can - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
-			"user_email": "dsfa10@gmail.com",
-			"user_phone_number": "0383995412",
-			"created_date": "03-10-2023",
-			"status": "Delivered",
-			"id": 5
-		},
-		{
-			"user_id": "2",
-			"user_address": "123 - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
-			"user_email": "Luti0510@gmail.com",
-			"user_phone_number": "0383995412",
-			"created_date": "03-10-2023",
-			"status": "Delivered",
-			"id": 6
-		},
-		{
-			"user_id": "2",
-			"user_address": "123 Quang Trung - Thị trấn Vụ Bản - Huyện Lạc Sơn - Tỉnh Hoà Bình",
-			"user_email": "Luti0510@gmail.com",
-			"user_phone_number": "0383995412",
-			"created_date": "03-10-2023",
-			"status": "Delivered",
-			"id": 7
-		},
-		{
-			"user_id": "2",
-			"user_address": "Doi Can - Phường Đồng Xuân - Quận Hoàn Kiếm - Thành phố Hà Nội",
-			"user_email": "Luti0510@gmail.com",
-			"user_phone_number": "0383995412",
-			"created_date": "03-10-2023",
-			"status": "Delivered",
-			"id": 8
-		}
-	],
-	"order_details": [
-		{
-			"id": 1,
-			"orders_id": 1,
-			"product_id": 59,
-			"quantity": 3,
-			"unit_price": 20,
-			"total": 60
-		},
-		{
-			"orders_id": 1,
-			"product_id": 6,
-			"quantity": 3,
-			"unit_price": 499,
-			"total": 2994,
-			"id": 2
-		},
-		{
-			"orders_id": 1,
-			"product_id": 7,
-			"quantity": 3,
-			"unit_price": 499,
-			"total": 3493,
-			"id": 3
-		},
-		{
-			"orders_id": 1,
-			"product_id": 6,
-			"quantity": 5,
-			"unit_price": 499,
-			"total": 2994,
-			"id": 4
-		},
-		{
-			"orders_id": 1,
-			"product_id": 7,
-			"quantity": 5,
-			"unit_price": 499,
-			"total": 3493,
-			"id": 5
-		},
-		{
-			"orders_id": 1,
-			"product_id": 6,
-			"quantity": 4,
-			"unit_price": 499,
-			"total": 2994,
-			"id": 6
-		},
-		{
-			"orders_id": 1,
-			"product_id": 7,
-			"quantity": 1,
-			"unit_price": 499,
-			"total": 3493,
-			"id": 7
-		}
-	],
-	"users": [
-		{
-			"id": 1,
-			"user_name": "quocnguyen",
-			"user_fullname": "",
-			"user_password": "12344556",
-			"user_email": "quocnguyen@gmail.com",
-			"user_avatar": "avatar 1"
-		},
-		{
-			"user_name": "nguyenA",
-			"user_fullname": "nguyen van A",
-			"user_password": "123456789",
-			"user_email": "quocnguyen111@gmail.com",
-			"user_avatar": "avatar 2",
-			"id": 2
-		},
-		{
-			"user_name": "PhuQuocNguyen",
-			"user_fullname": "",
-			"user_password": "123123",
-			"user_email": "Luti0510@gmail.com",
-			"user_avatar": "",
-			"id": 3
-		},
-		{
-			"user_name": "PhuQuocNguyen",
-			"user_fullname": "",
-			"user_password": "123123",
-			"user_email": "quocnco@gmail.com",
-			"user_avatar": "",
-			"id": 4
-		}
-	]
+  "products": [
+    {
+      "id": 6,
+      "title": "MacBook Pro 2",
+      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+      "price": 600,
+      "brand": "Apple",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+      "image": ""
+    },
+    {
+      "id": 7,
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": 400,
+      "brand": "Samsung",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Microsoft Surface Laptop 4",
+      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+      "price": 949,
+      "brand": "Microsoft Surface",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Infinix INBOOK",
+      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+      "price": 234,
+      "brand": "Infinix",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+    },
+    {
+      "id": 10,
+      "title": "HP Pavilion 15-DK1056WM",
+      "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+      "price": 423,
+      "brand": "HP Pavilion",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+    },
+    {
+      "id": 11,
+      "title": "perfume Oil",
+      "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+      "price": 555,
+      "brand": "Impression of Acqua Di Gio",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/11/thumbnail.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Brown Perfume",
+      "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+      "price": 111,
+      "brand": "Royal_Mirage",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/12/thumbnail.jpg"
+    },
+    {
+      "id": 13,
+      "title": "Fog Scent Xpressio Perfume",
+      "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
+      "price": 333,
+      "brand": "Fog Scent Xpressio",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/13/thumbnail.webp"
+    },
+    {
+      "id": 14,
+      "title": "Non-Alcoholic Concentrated Perfume Oil",
+      "description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
+      "price": 234,
+      "brand": "Al Munakh",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/14/thumbnail.jpg"
+    },
+    {
+      "id": 15,
+      "title": "Eau De Perfume Spray",
+      "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
+      "price": 100,
+      "brand": "Lord - Al-Rehab",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/15/thumbnail.jpg"
+    },
+    {
+      "id": 16,
+      "title": "Hyaluronic Acid Serum",
+      "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
+      "price": 638,
+      "brand": "L'Oreal Paris",
+      "category": "skincare",
+      "thumbnail": "https://i.dummyjson.com/data/products/16/thumbnail.jpg"
+    },
+    {
+      "id": 17,
+      "title": "Tree Oil 30ml",
+      "description": "Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria,",
+      "price": 444,
+      "brand": "Hemani Tea",
+      "category": "skincare",
+      "thumbnail": "https://i.dummyjson.com/data/products/17/thumbnail.jpg"
+    },
+    {
+      "id": 18,
+      "title": "Oil Free Moisturizer 100ml",
+      "description": "Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.",
+      "price": 998,
+      "brand": "Dermive",
+      "category": "skincare",
+      "thumbnail": "https://i.dummyjson.com/data/products/18/thumbnail.jpg"
+    },
+    {
+      "id": 19,
+      "title": "Skin Beauty Serum.",
+      "description": "Product name: rorec collagen hyaluronic acid white face serum riceNet weight: 15 m",
+      "price": 500,
+      "brand": "ROREC White Rice",
+      "category": "skincare",
+      "thumbnail": "https://i.dummyjson.com/data/products/19/thumbnail.jpg"
+    },
+    {
+      "id": 20,
+      "title": "Freckle Treatment Cream- 15gm",
+      "description": "Fair & Clear is Pakistan's only pure Freckle cream which helpsfade Freckles, Darkspots and pigments. Mercury level is 0%, so there are no side effects.",
+      "price": 123,
+      "brand": "Fair & Clear",
+      "category": "skincare",
+      "thumbnail": "https://i.dummyjson.com/data/products/20/thumbnail.jpg"
+    },
+    {
+      "id": 21,
+      "title": "- Daal Masoor 500 grams",
+      "description": "Fine quality Branded Product Keep in a cool and dry place",
+      "price": 100,
+      "brand": "Saaf & Khaas",
+      "category": "groceries",
+      "thumbnail": "https://i.dummyjson.com/data/products/21/thumbnail.png"
+    },
+    {
+      "id": 22,
+      "title": "Elbow Macaroni - 400 gm",
+      "description": "Product details of Bake Parlor Big Elbow Macaroni - 400 gm",
+      "price": 200,
+      "brand": "Bake Parlor Big",
+      "category": "groceries",
+      "thumbnail": "https://i.dummyjson.com/data/products/22/thumbnail.jpg"
+    },
+    {
+      "id": 23,
+      "title": "Orange Essence Food Flavou",
+      "description": "Specifications of Orange Essence Food Flavour For Cakes and Baking Food Item",
+      "price": 300,
+      "brand": "Baking Food Items",
+      "category": "groceries",
+      "thumbnail": "https://i.dummyjson.com/data/products/23/thumbnail.jpg"
+    },
+    {
+      "id": 24,
+      "title": "cereals muesli fruit nuts",
+      "description": "original fauji cereal muesli 250gm box pack original fauji cereals muesli fruit nuts flakes breakfast cereal break fast faujicereals cerels cerel foji fouji",
+      "price": 499,
+      "brand": "fauji",
+      "category": "groceries",
+      "thumbnail": "https://i.dummyjson.com/data/products/24/thumbnail.jpg"
+    },
+    {
+      "title": "MacBook Pro 3",
+      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+      "price": 500,
+      "brand": "Apple",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+      "id": 25
+    },
+    {
+      "id": 26,
+      "title": "Plant Hanger For Home",
+      "description": "Boho Decor Plant Hanger For Home Wall Decoration Macrame Wall Hanging Shelf",
+      "price": 499,
+      "brand": "Boho Decor",
+      "category": "home-decoration",
+      "thumbnail": "https://i.dummyjson.com/data/products/26/thumbnail.jpg"
+    },
+    {
+      "id": 27,
+      "title": "Flying Wooden Bird",
+      "description": "Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm",
+      "price": 499,
+      "brand": "Flying Wooden",
+      "category": "home-decoration",
+      "thumbnail": "https://i.dummyjson.com/data/products/27/thumbnail.webp"
+    },
+    {
+      "id": 28,
+      "title": "3D Embellishment Art Lamp",
+      "description": "3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)",
+      "price": 499,
+      "brand": "LED Lights",
+      "category": "home-decoration",
+      "thumbnail": "https://i.dummyjson.com/data/products/28/thumbnail.jpg"
+    },
+    {
+      "id": 29,
+      "title": "Handcraft Chinese style",
+      "description": "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
+      "price": 499,
+      "brand": "luxury palace",
+      "category": "home-decoration",
+      "thumbnail": "https://i.dummyjson.com/data/products/29/thumbnail.webp"
+    },
+    {
+      "id": 30,
+      "title": "Key Holder",
+      "description": "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality",
+      "price": 499,
+      "brand": "Golden",
+      "category": "home-decoration",
+      "thumbnail": "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
+    },
+    {
+      "title": "Levents® Basic Sweater/ Grey",
+      "price": 100,
+      "description": "LEVENTS® BASIC SWEATER Chất liệu: Nỉ Kích cỡ: 2/3/4  Sản phẩm thuộc thuộc Bộ sưu tập Thu/ Đông 2022 của Levents   ",
+      "category": "clothing",
+      "thumbnail": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697092271/lazedaFpoly/penyxcvht0gzguatlriv.jpg",
+      "id": 31
+    }
+  ],
+  "categories": [
+    {
+      "id": 2,
+      "name": "laptops"
+    },
+    {
+      "id": 3,
+      "name": "fragrances"
+    },
+    {
+      "id": 4,
+      "name": "skincare"
+    },
+    {
+      "id": 5,
+      "name": "groceries"
+    },
+    {
+      "id": 6,
+      "name": "home-decoration"
+    },
+    {
+      "name": "clothing",
+      "id": 7
+    }
+  ],
+  "orders": [
+    {
+      "user_id": 3,
+      "user_address": "Doi Can - Phường Hòa Minh - Quận Liên Chiểu - Thành phố Đà Nẵng",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "14-10-2023",
+      "status": "Delivered",
+      "id": 1
+    },
+    {
+      "user_id": 3,
+      "user_address": "Doi Can - Phường Quang Trung - Thành phố Hà Giang - Tỉnh Hà Giang",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "15-10-2023",
+      "status": "Delivered",
+      "id": 2
+    },
+    {
+      "user_id": 3,
+      "user_address": "123 Quang Trung - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "15-10-2023",
+      "status": "Delivered",
+      "id": 3
+    },
+    {
+      "user_id": 3,
+      "user_address": "Doi Can - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "15-10-2023",
+      "status": "Delivered",
+      "id": 4
+    },
+    {
+      "user_id": 3,
+      "user_address": "123 Quang Trung - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "15-10-2023",
+      "status": "Delivered",
+      "id": 5
+    },
+    {
+      "user_id": 3,
+      "user_address": "123 Nguyễn Thị Thập - Xã Cốc Pàng - Huyện Bảo Lạc - Tỉnh Cao Bằng",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "15-10-2023",
+      "status": "Delivered",
+      "id": 6
+    }
+  ],
+  "order_details": [
+    {
+      "orders_id": 1,
+      "product_id": 7,
+      "quantity": 2,
+      "unit_price": 400,
+      "total": 800,
+      "id": 1
+    },
+    {
+      "orders_id": 2,
+      "product_id": 8,
+      "quantity": 2,
+      "unit_price": 949,
+      "total": 1898,
+      "id": 2
+    },
+    {
+      "orders_id": 2,
+      "product_id": 7,
+      "quantity": 2,
+      "unit_price": 400,
+      "total": 800,
+      "id": 3
+    },
+    {
+      "orders_id": 3,
+      "product_id": 10,
+      "quantity": 1,
+      "unit_price": 423,
+      "total": 423,
+      "id": 4
+    },
+    {
+      "orders_id": 3,
+      "product_id": 9,
+      "quantity": 1,
+      "unit_price": 234,
+      "total": 234,
+      "id": 5
+    },
+    {
+      "orders_id": 4,
+      "product_id": 7,
+      "quantity": 2,
+      "unit_price": 400,
+      "total": 800,
+      "id": 6
+    },
+    {
+      "orders_id": 4,
+      "product_id": 8,
+      "quantity": 1,
+      "unit_price": 949,
+      "total": 949,
+      "id": 7
+    },
+    {
+      "orders_id": 5,
+      "product_id": 10,
+      "quantity": 1,
+      "unit_price": 423,
+      "total": 423,
+      "id": 8
+    },
+    {
+      "orders_id": 5,
+      "product_id": 11,
+      "quantity": 1,
+      "unit_price": 555,
+      "total": 555,
+      "id": 9
+    },
+    {
+      "orders_id": 6,
+      "product_id": 7,
+      "quantity": 2,
+      "unit_price": 400,
+      "total": 800,
+      "id": 10
+    }
+  ],
+  "shipping": [
+    {
+      "orders_id": 1,
+      "username": "PhuQuocNguyen",
+      "address": "Doi Can - Phường Hòa Minh - Quận Liên Chiểu - Thành phố Đà Nẵng",
+      "method": "momo",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "14-10-2023",
+      "id": 1
+    },
+    {
+      "orders_id": 2,
+      "username": "PhuQuocNguyen",
+      "address": "Doi Can - Phường Quang Trung - Thành phố Hà Giang - Tỉnh Hà Giang",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "15-10-2023",
+      "id": 2
+    },
+    {
+      "orders_id": 3,
+      "username": "PhuQuocNguyen",
+      "address": "123 Quang Trung - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "15-10-2023",
+      "id": 3
+    },
+    {
+      "orders_id": 4,
+      "username": "test22",
+      "address": "Doi Can - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "15-10-2023",
+      "totalOrder": null,
+      "id": 4
+    },
+    {
+      "orders_id": 5,
+      "username": "PhuQuocNguyenádasd",
+      "address": "123 Quang Trung - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "15-10-2023",
+      "totalOrder": 978,
+      "id": 5
+    },
+    {
+      "orders_id": 6,
+      "username": "PhuQuocNguyen",
+      "address": "123 Nguyễn Thị Thập - Xã Cốc Pàng - Huyện Bảo Lạc - Tỉnh Cao Bằng",
+      "method": "momo",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "15-10-2023",
+      "totalOrder": 800,
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "user_name": "quocnguyen",
+      "user_fullname": "Monkey D.Luffy",
+      "user_password": "12344556",
+      "user_email": "quocnguyen@gmail.com",
+      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697211508/lazedaFpoly/iycch7vo19tkckkw99up.jpg",
+      "gender": "1",
+      "role": "1",
+      "active": "1"
+    },
+    {
+      "user_name": "nguyenA",
+      "user_fullname": "nguyen van A",
+      "user_password": "123456789",
+      "user_email": "quocnguyen111@gmail.com",
+      "user_avatar": "avatar 2",
+      "id": 2,
+      "gender": 1,
+      "role": 1,
+      "active": 1
+    },
+    {
+      "user_name": "PhuQuocNguyen",
+      "user_fullname": "",
+      "user_password": "123123",
+      "user_email": "Luti0510@gmail.com",
+      "user_avatar": "",
+      "id": 3,
+      "gender": 1,
+      "role": 1,
+      "active": 1
+    },
+    {
+      "user_name": "PhuQuocNguyen",
+      "user_fullname": "",
+      "user_password": "123123",
+      "user_email": "quocnco@gmail.com",
+      "user_avatar": "",
+      "id": 4,
+      "gender": 1,
+      "role": 1,
+      "active": 1
+    },
+    {
+      "user_name": "admin",
+      "user_fullname": "Nguyễn Phú Quốc",
+      "user_password": "123456",
+      "user_email": "admin@gmail.com",
+      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697204646/lazedaFpoly/jwqy08ntxpwest0sbh4w.webp",
+      "gender": "0",
+      "role": "1",
+      "active": "1",
+      "id": 5
+    }
+  ]
 }

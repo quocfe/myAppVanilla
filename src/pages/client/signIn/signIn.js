@@ -34,7 +34,8 @@ const signIn = () => {
 				const { email, password } = data;
 				const user = users.filter((user) => user.user_email === email);
 				let emailEmpty = users.some((user) => user.user_email === email);
-				const [{ id, user_password }] = user;
+				console.log(user);
+				console.log(emailEmpty);
 
 				if (!emailEmpty) {
 					toast({
@@ -44,6 +45,8 @@ const signIn = () => {
 						show: true,
 					});
 				} else {
+					const [{ id, user_password }] = user;
+
 					if (password != user_password) {
 						toast({
 							title: 'Thất bại',
@@ -77,7 +80,7 @@ const signIn = () => {
                 <i class="fa-solid fa-backward"></i>
                 <span>Back</span>
               </a>
-              <form method="post" id="signin">
+              <form method="post" id="signin" class="form">
                 <div class="login-social">
                   <p class="mb-0 text-center mb-2">Sign in with</p>
                   <div class="social-method">
@@ -128,7 +131,7 @@ const signIn = () => {
                     type="password"
                     id="password"
                     name="password"
-                    class="form-control form-control-lg mb-1"
+                    class="form-control form-control-lg mb-1 showPassword"
                     placeholder="Enter password"
                   />
                   <span class="form-message"></span>
@@ -136,17 +139,9 @@ const signIn = () => {
 
                 <div class="d-flex form-group justify-content-between align-items-center">
                   <!-- Checkbox -->
-                  <div class="form-check mb-0 d-flex aligns-item-center">
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      name="checkbox"
-                      value="checked"
-                      id="remember"
-                    />
-                    <label class="form-check-label user-select-none" for="remember">
-                      Remember me
-                    </label>
+                  <div class="showPass mb-0">
+                    <input id="showPass" type="checkbox">
+                    <label for="showPass" class="showPassBtn">Hiển thị mật khẩu</label>
                   </div>
                   <a href="#!" class="text-body">Forgot password?</a>
                 </div>

@@ -1,0 +1,13 @@
+.card_body {
+	background-color: var(--black3);
+	border: 1px solid white !important;
+}
+
+.body tr td {
+	padding: 16px !important;
+	vertical-align: middle;
+}
+
+.body tr:last-child {
+	border-bottom: transparent;
+}

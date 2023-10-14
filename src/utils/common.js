@@ -1,4 +1,5 @@
 import { productAPI } from '@/api';
+import { useEffect } from '@/utils';
 
 function debounce(func, delay) {
 	let timeoutId;
@@ -102,6 +103,21 @@ inputSearchs.forEach((btn) => {
 	);
 });
 
-//-- handle active header --///
+//-- handle view passs --///
 
-console.log(window.location.pathname);
+useEffect(() => {
+	const btnPassShow = document.querySelector('.showPassBtn');
+	const inputPasswords = document.querySelectorAll('.showPassword');
+
+	btnPassShow?.addEventListener('click', () => {
+		inputPasswords.forEach((input) => {
+			if (input.type == 'password') {
+				input.type = 'text';
+			} else {
+				input.type = 'password';
+			}
+		});
+	});
+});
+
+//

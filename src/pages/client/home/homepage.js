@@ -5,6 +5,7 @@ import { useQuantity } from '@/hooks';
 import { cart } from '@/pages/client';
 
 const homepage = () => {
+	localStorage.removeItem('orderID');
 	let idLocal = JSON.parse(localStorage.getItem('id')) || [];
 	const [productLimit, setProductLimit] = useState([]);
 	const [currentID, setCurrentID] = useState(idLocal);
