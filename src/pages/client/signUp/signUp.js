@@ -36,16 +36,28 @@ const signUp = () => {
 				),
 			],
 			onsubmit: async (data) => {
-				console.log(data);
 				const { username, passwordconfirm, email } = data;
 				let mailsLocal = [];
+				let userNamesLocal = [];
 				users.forEach((user) => {
 					mailsLocal.push(user.user_email);
+					userNamesLocal.push(user.user_name);
 				});
 
 				const emailExits = mailsLocal.filter(
 					(mailLocal) => mailLocal === email
 				);
+				const userNameExits = userNamesLocal.filter(
+					(userNameLocal) => userNameLocal === username
+				);
+				if (userNameExits.length != 0) {
+					toast({
+						title: 'Thất bại',
+						message: 'Username đã tồn tại trên hệ thống!',
+						type: 'error',
+						show: true,
+					});
+				}
 				if (emailExits.length != 0) {
 					toast({
 						title: 'Thất bại',
@@ -158,7 +170,6 @@ const signUp = () => {
                       <span class="form-message"></span>
                     </div>
                   </div>
-
                   <p class="form-check small fw-bold mt-2 pt-1 mb-2">
                     You have an account?
                     <a href="/login" class="link-danger">Login</a>

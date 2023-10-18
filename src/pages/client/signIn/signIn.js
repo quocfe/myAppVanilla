@@ -34,8 +34,6 @@ const signIn = () => {
 				const { email, password } = data;
 				const user = users.filter((user) => user.user_email === email);
 				let emailEmpty = users.some((user) => user.user_email === email);
-				console.log(user);
-				console.log(emailEmpty);
 
 				if (!emailEmpty) {
 					toast({

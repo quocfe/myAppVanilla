@@ -25,8 +25,8 @@ const productsAdd = () => {
 
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
-			const urlImg = await handleUploadFile(productImg.files);
 			if (!(await messageQuestion('Add products'))) return;
+			const urlImg = await handleUploadFile(productImg.files);
 			try {
 				await productAPI.addProduct({
 					title: productName.value,

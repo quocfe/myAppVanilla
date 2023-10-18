@@ -1,12 +1,13 @@
-import { usersAPI } from '@/api';
+import { updateImgApi, usersAPI } from '@/api';
 import * as style from './style.module.css';
 import { useLocalStorage } from '@/hooks';
 import { useEffect, useState } from '@/utils';
+import { messageQuestion } from '@/components';
 
 const account = () => {
 	const [userLocal] = useLocalStorage('user');
 	const [user, setUser] = useState({});
-	console.log(user);
+
 	useEffect(async () => {
 		try {
 			const response = await usersAPI.getUser(userLocal);
@@ -15,29 +16,96 @@ const account = () => {
 			console.log(error);
 		}
 	}, []);
+
+	useEffect(() => {
+		const formAccount = document.querySelector(`.${style.form_account}`);
+		const formBtn = document.querySelector(`.${style.account_btn} `);
+		const editBtn = document.querySelector(`.${style.edit}`);
+		const cancelBtn = document.querySelector(`.${style.cancel}`);
+		const updateBtn = document.querySelector(`.${style.update}`);
+		const avatar = document.querySelector(`.${style.account_head_img} img`);
+		const editImgBtn = document.querySelector('.btn_editImg');
+		const file = document.querySelector('#file');
+		const headerImg = document.querySelector('.header-icon img');
+
+		editBtn.addEventListener('click', () => {
+			formAccount.classList.add(`${style.show}`);
+			formBtn.classList.add(`${style.show}`);
+		});
+		cancelBtn.addEventListener('click', () => {
+			formAccount.classList.remove(`${style.show}`);
+			formBtn.classList.remove(`${style.show}`);
+		});
+
+		updateBtn.addEventListener('click', async (e) => {
+			e.preventDefault();
+			let fullname = document.querySelector('#fullname').value;
+			let email = document.querySelector('#email').value;
+			let gender = +document.querySelector('#gender').value;
+			const dataUser = {
+				id: userLocal,
+				user_fullname: fullname,
+				user_email: email,
+				gender,
+			};
+			if (!(await messageQuestion('Update'))) return;
+			await usersAPI.updateUser(dataUser);
+			formAccount.classList.remove(`${style.show}`);
+			formBtn.classList.remove(`${style.show}`);
+			document.querySelector('.label_fullname').innerHTML =
+				dataUser.user_fullname;
+			document.querySelector('.label_gender').innerHTML =
+				gender === 1 ? 'Nam' : 'Nữ';
+		});
+
+		editImgBtn.addEventListener('click', async (e) => {
+			e.preventDefault();
+			if (!(await messageQuestion('Update Image'))) return;
+			const urlImg = await handleUploadFile(file.files);
+			const data = {
+				id: userLocal,
+				user_avatar: urlImg,
+			};
+			try {
+				await usersAPI.updateUser(data);
+				avatar.setAttribute('src', data.user_avatar);
+				headerImg.setAttribute('src', data.user_avatar);
+			} catch (error) {
+				console.log(error);
+			}
+		});
+
+		const handleUploadFile = async (file) => {
+			try {
+				const response = await updateImgApi.updateImg(file[0]);
+				return response.data.secure_url;
+			} catch (error) {
+				console.log(error);
+			}
+		};
+	});
+
 	const { user_name, user_fullname, user_email, gender, user_avatar } = user;
 
-	console.log(gender);
-
 	const template = `
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" id="changeInfor" enctype="multipart/form-data">
         <div class="account">
           <div class="${style.account_head}">
             <div class="${style.account_head_img}">
               <img src=${
 								user_avatar
 									? user_avatar
-									: 'https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/11/4/photo-6-16675562029442139900239.jpg'
+									: '	https://as1.ftcdn.net/v2/jpg/02/59/39/46/1000_F_259394679_GGA8JJAEkukYJL9XXFH2JoC3nMguBPNH.jpg'
 							} alt="">
             </div>
             
               <div class="${style.form_img}">
                 <div class="${style.btn_change_img}">
-                  <input class="custom-file-input" name="img" type="file" id="file" accept="image/*">
+                  <input class="custom-file-input" name="img" type="file" id="file" >
                   <label for="file">Sửa ảnh đại diện</label>
                 </div>
                 <div class="message" style="margin-top: 20px;"></div>
-                <button type="submit" name="edit_img" fdprocessedid="hbjx2">Sửa</button>
+                <button type="submit" class="btn_editImg" name="edit_img" fdprocessedid="hbjx2">Sửa</button>
               </div>
             
           </div>
@@ -46,13 +114,15 @@ const account = () => {
               Thông tin cá nhân
             </h4>
             <div class="${style.account_info_main}">
-              <div class="${style.form_account} _show_1mqw7_115">
+              <div class="${style.form_account}">
                 <div class="${style.form_group}">
                   <label for="">Họ tên</label>
-                  <input type="text" name="fullname" id="" value=${
+                  <input type="text" name="fullname" id="fullname" value="${
 										user_fullname ? user_fullname : ''
-									}>
-                  <p>Họ tên</p>
+									}">
+                  <p class="label_fullname">${
+										user_fullname ? user_fullname : ''
+									}</p>
                 </div>
                 <div class="${style.form_group}">
                   <label for="">Tên đăng nhập</label>
@@ -63,27 +133,22 @@ const account = () => {
                 </div>
                 <div class="${style.form_group}">
                   <label for="">Email</label>
-                  <input type="text" name="email" id="" value="${
+                  <input type="text" name="email" id="email" value="${
 										user_email ? user_email : ''
 									}">
-                  <p>${user_email ? user_email : ''}</p>
+                  <p >${user_email ? user_email : ''}</p>
                 </div>
                 <div class="${style.form_group}">
                   <label for="">Giới tính</label>
-                  <select name="gender" id="">
-                    <option value="Nam" ${
+                  <select name="gender" id="gender">
+                    <option value="1" ${
 											gender === 1 ? 'selected' : ''
 										}>Nam</option>
-                    <option value="Nữ" ${
-											gender === 2 ? 'selected' : ''
+                    <option value="0" ${
+											gender === 0 ? 'selected' : ''
 										}>Nữ</option>
                   </select>
-                  <p>${gender === 1 ? 'Nam' : 'Nu'}</p>
-                </div>
-                <div class="${style.form_group}">
-                  <label for="">Địa chỉ</label>
-                  <input type="text" name="address" id="" value="Liên Chiểu, Đà Nẵng">
-                  <p>Liên Chiểu, Đà Nẵng</p>
+                  <p class="label_gender">${gender === 1 ? 'Nam' : 'Nu'}</p>
                 </div>
               </div>
             </div>

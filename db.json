@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 6,
-      "title": "MacBook Pro 2",
+      "title": "MacBook Pro 4",
       "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
       "price": 600,
       "brand": "Apple",
@@ -268,7 +268,7 @@
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
       "created_date": "14-10-2023",
-      "status": "Delivered",
+      "status": "Hủy",
       "id": 1
     },
     {
@@ -277,7 +277,7 @@
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
       "created_date": "15-10-2023",
-      "status": "Delivered",
+      "status": "Đang xử lý",
       "id": 2
     },
     {
@@ -286,7 +286,7 @@
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
       "created_date": "15-10-2023",
-      "status": "Delivered",
+      "status": "Đang xử lý",
       "id": 3
     },
     {
@@ -295,7 +295,7 @@
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
       "created_date": "15-10-2023",
-      "status": "Delivered",
+      "status": "Đang xử lý",
       "id": 4
     },
     {
@@ -304,7 +304,7 @@
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
       "created_date": "15-10-2023",
-      "status": "Delivered",
+      "status": "Đang xử lý",
       "id": 5
     },
     {
@@ -313,8 +313,53 @@
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
       "created_date": "15-10-2023",
-      "status": "Delivered",
+      "status": "Đang xử lý",
       "id": 6
+    },
+    {
+      "user_id": 1,
+      "user_address": "123 Quang Trung - Xã Định Bình - Thành phố Cà Mau - Tỉnh Cà Mau",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "15-10-2023",
+      "status": "Đã xác nhận",
+      "id": 7
+    },
+    {
+      "user_id": 1,
+      "user_address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "15-10-2023",
+      "status": "Đã xác nhận",
+      "id": 8
+    },
+    {
+      "user_id": 1,
+      "user_address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "16-10-2023",
+      "status": "Đang xử lý",
+      "id": 9
+    },
+    {
+      "user_id": 1,
+      "user_address": "123 Quang Trung - Phường Máy Tơ - Quận Ngô Quyền - Thành phố Hải Phòng",
+      "user_email": "zoro@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "16-10-2023",
+      "status": "Đã xác nhận",
+      "id": 10
+    },
+    {
+      "user_id": 3,
+      "user_address": "123 Nguyễn Thị Thập - Phường Sông Hiến - Thành phố Cao Bằng - Tỉnh Cao Bằng",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "17-10-2023",
+      "status": "Đã xác nhận",
+      "id": 11
     }
   ],
   "order_details": [
@@ -397,6 +442,62 @@
       "unit_price": 400,
       "total": 800,
       "id": 10
+    },
+    {
+      "orders_id": 7,
+      "product_id": 7,
+      "quantity": 1,
+      "unit_price": 400,
+      "total": 400,
+      "id": 11
+    },
+    {
+      "orders_id": 7,
+      "product_id": 8,
+      "quantity": 1,
+      "unit_price": 949,
+      "total": 949,
+      "id": 12
+    },
+    {
+      "orders_id": 8,
+      "product_id": 6,
+      "quantity": 1,
+      "unit_price": 600,
+      "total": 600,
+      "id": 13
+    },
+    {
+      "orders_id": 9,
+      "product_id": 7,
+      "quantity": 1,
+      "unit_price": 400,
+      "total": 400,
+      "id": 14
+    },
+    {
+      "orders_id": 10,
+      "product_id": 31,
+      "quantity": 2,
+      "unit_price": 100,
+      "total": 200,
+      "id": 15
+    },
+    {
+      "orders_id": 10,
+      "product_id": 26,
+      "quantity": 2,
+      "unit_price": 499,
+      "total": 998,
+      "id": 16
+    },
+    {
+      "orders_id": 11,
+      "product_id": 7,
+      "quantity": 3,
+      "unit_price": 400,
+      "total": 1200,
+      "id": 17
     }
   ],
   "shipping": [
@@ -462,6 +563,61 @@
       "created_date": "15-10-2023",
       "totalOrder": 800,
       "id": 6
+    },
+    {
+      "orders_id": 7,
+      "username": "Monkey D.Dragon",
+      "address": "123 Quang Trung - Xã Định Bình - Thành phố Cà Mau - Tỉnh Cà Mau",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "15-10-2023",
+      "totalOrder": 1349,
+      "id": 7
+    },
+    {
+      "orders_id": 8,
+      "username": "quocnguyen",
+      "address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "15-10-2023",
+      "totalOrder": 600,
+      "id": 8
+    },
+    {
+      "orders_id": 9,
+      "username": "quocnguyen",
+      "address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "16-10-2023",
+      "totalOrder": 400,
+      "id": 9
+    },
+    {
+      "orders_id": 10,
+      "username": "zoro lac duong",
+      "address": "123 Quang Trung - Phường Máy Tơ - Quận Ngô Quyền - Thành phố Hải Phòng",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "16-10-2023",
+      "totalOrder": 1198,
+      "id": 10
+    },
+    {
+      "orders_id": 11,
+      "username": "PhuQuocNguyen",
+      "address": "123 Nguyễn Thị Thập - Phường Sông Hiến - Thành phố Cao Bằng - Tỉnh Cao Bằng",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "17-10-2023",
+      "totalOrder": 1200,
+      "id": 11
     }
   ],
   "users": [
@@ -472,9 +628,9 @@
       "user_password": "12344556",
       "user_email": "quocnguyen@gmail.com",
       "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697211508/lazedaFpoly/iycch7vo19tkckkw99up.jpg",
-      "gender": "1",
-      "role": "1",
-      "active": "1"
+      "gender": 1,
+      "role": 0,
+      "active": 1
     },
     {
       "user_name": "nguyenA",
@@ -489,36 +645,25 @@
     },
     {
       "user_name": "PhuQuocNguyen",
-      "user_fullname": "",
+      "user_fullname": "Phú Quý Nguyễn",
       "user_password": "123123",
       "user_email": "Luti0510@gmail.com",
-      "user_avatar": "",
+      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697554989/lazedaFpoly/qn8jzuqjlsmmagv7uuia.webp",
       "id": 3,
       "gender": 1,
       "role": 1,
       "active": 1
     },
     {
-      "user_name": "PhuQuocNguyen",
-      "user_fullname": "",
+      "user_name": "PhuQuoc",
+      "user_fullname": "Admin",
       "user_password": "123123",
       "user_email": "quocnco@gmail.com",
-      "user_avatar": "",
+      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697609868/lazedaFpoly/yv1xdgreagcxlkf7ypfl.png",
       "id": 4,
-      "gender": 1,
+      "gender": 0,
       "role": 1,
       "active": 1
-    },
-    {
-      "user_name": "admin",
-      "user_fullname": "Nguyễn Phú Quốc",
-      "user_password": "123456",
-      "user_email": "admin@gmail.com",
-      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697204646/lazedaFpoly/jwqy08ntxpwest0sbh4w.webp",
-      "gender": "0",
-      "role": "1",
-      "active": "1",
-      "id": 5
     }
   ]
 }

@@ -87,6 +87,11 @@
 	border-radius: 10px;
 	display: none;
 }
+.account_info_main .form_group input[readonly] {
+	background-color: #d3d3d3;
+	cursor: not-allowed;
+}
+
 .account_info_main .form_group select {
 	display: none;
 	border-radius: 10px;

@@ -2,7 +2,7 @@ import * as style from './style.module.css';
 
 const member = (page) => {
 	const template = `
-    <div class="member container"> 
+    <div class="member container mt-4"> 
       <div class="row"> 
         <div class="${style.member_sidebar} col-lg-3">
           <ul class="p-4"> 

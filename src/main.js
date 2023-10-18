@@ -20,6 +20,7 @@ import {
 import {
 	category,
 	categoryAdd,
+	categoryEdit,
 	dashboard,
 	products,
 	productsAdd,
@@ -27,13 +28,15 @@ import {
 	user,
 	userAdd,
 	userEdit,
+	orderAdmin,
+	detailOrder,
 } from './pages/admin';
-import categoryEdit from './pages/admin/category/categoryEdit';
 import {
 	home,
 	order,
 	account,
 	changePass,
+	detailOrder as memberdetailOrder,
 } from './pages/client/member/components';
 
 const app = document.querySelector('#app');
@@ -77,6 +80,8 @@ router.on({
 	'/member/account': () => render(() => clientLayout(member(account())), app),
 	'/member/changePass': () =>
 		render(() => clientLayout(member(changePass())), app),
+	'/member/detailorder/:id': ({ data }) =>
+		render(() => clientLayout(member(memberdetailOrder(data))), app),
 });
 
 router.on('/login', () => render(() => clientLayout(signIn()), app));
@@ -119,6 +124,12 @@ router.on({
 	},
 	'admin/user/edit/:id': ({ data }) => {
 		render(() => adminLayout(userEdit(data)), app);
+	},
+	'admin/order': () => {
+		render(() => adminLayout(orderAdmin()), app);
+	},
+	'/admin/detail_order/:id': ({ data }) => {
+		render(() => adminLayout(detailOrder(data)), app);
 	},
 });
 

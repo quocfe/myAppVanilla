@@ -1,12 +1,9 @@
 import { productAPI } from '@/api';
-import { useEffect } from '@/utils';
 
 function debounce(func, delay) {
 	let timeoutId;
-
 	return function (...args) {
 		const context = this;
-
 		clearTimeout(timeoutId);
 
 		timeoutId = setTimeout(function () {
@@ -103,21 +100,20 @@ inputSearchs.forEach((btn) => {
 	);
 });
 
-//-- handle view passs --///
+// show menu-user
 
-useEffect(() => {
-	const btnPassShow = document.querySelector('.showPassBtn');
-	const inputPasswords = document.querySelectorAll('.showPassword');
-
-	btnPassShow?.addEventListener('click', () => {
-		inputPasswords.forEach((input) => {
-			if (input.type == 'password') {
-				input.type = 'text';
-			} else {
-				input.type = 'password';
-			}
-		});
+const userIconTags = document.querySelectorAll('.icon-user');
+userIconTags.forEach((userIconTag) => {
+	if (userIconTag.classList.contains('show')) {
+		userIconTag.classList.remove('show');
+	}
+});
+userIconTags.forEach((userIconTag) => {
+	userIconTag.addEventListener('click', function () {
+		if (this.classList.contains('show')) {
+			this.classList.remove('show');
+		} else {
+			this.classList.add('show');
+		}
 	});
 });
-
-//

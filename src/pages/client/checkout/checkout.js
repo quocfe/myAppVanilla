@@ -192,7 +192,7 @@ const checkout = () => {
 					user_email: c_email_address,
 					user_phone_number: c_phone,
 					created_date,
-					status: 'Delivered',
+					status: 'Đang xử lý',
 				};
 				if (!(await messageQuestion('Thanh toán'))) return;
 				let sumTotal = 0;

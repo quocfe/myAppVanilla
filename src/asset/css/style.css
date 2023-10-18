@@ -1363,3 +1363,7 @@ select {
 	transform: rotate(45deg) translate(-50%, -50%);
 	z-index: 2;
 }
+
+.swal2-center {
+	z-index: 9999 !important;
+}

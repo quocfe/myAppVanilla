@@ -124,6 +124,15 @@ const adminLayout = (content) => {
         </div>
       </ul>
 
+      <ul  id="accordionFlushOrder">
+        <li class="accordionItem">
+          <a href="/admin/order"
+            >Đơn hàng</a
+          >
+          <ion-icon name="cart-outline"></ion-icon>
+        </li>
+        
+      </ul>
 
     </div>
     <div class=${style.adminMain}>

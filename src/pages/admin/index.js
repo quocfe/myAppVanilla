@@ -8,6 +8,8 @@ import categoryEdit from './category/categoryEdit';
 import user from './user/user';
 import userAdd from './user/userAdd';
 import userEdit from './user/userEdit';
+import orderAdmin from './order/order';
+import detailOrder from './detailOrder/detailorder';
 
 export {
 	products,
@@ -20,4 +22,6 @@ export {
 	user,
 	userAdd,
 	userEdit,
+	orderAdmin,
+	detailOrder,
 };

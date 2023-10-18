@@ -12,7 +12,7 @@ const user = () => {
 			console.log(error);
 		}
 	}, []);
-
+	console.log(member);
 	const template = `
       <div class="main">
         <div class="container-fluid">
@@ -42,8 +42,8 @@ const user = () => {
 													el.user_fullname ? el.user_fullname : 'Họ tên'
 												}</td>
                         <td>${el.user_email ? el.user_email : 'Họ tên'}</td>
-                        <td>0</td>
-                        <td>1</td>
+                        <td>${el.role}</td>
+                        <td>${el.active}</td>
                         <td>
                           <a href="/admin/user/edit/${
 														el.id
@@ -56,8 +56,6 @@ const user = () => {
                   `
 										)
 										.join('')}
-                  
-                  
                 </tbody>
               </table>
             </div>

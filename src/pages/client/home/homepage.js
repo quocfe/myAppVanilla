@@ -60,7 +60,6 @@ const homepage = () => {
 		addToCartbtns.forEach((btn) => {
 			btn.addEventListener('click', handleClickAdd);
 		});
-		//
 	});
 
 	const template = `

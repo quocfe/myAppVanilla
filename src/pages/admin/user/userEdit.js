@@ -4,7 +4,7 @@ import { useEffect, useState, router } from '@/utils';
 
 const userEdit = ({ id }) => {
 	const [user, setUser] = useState({});
-
+	console.log(user);
 	useEffect(async () => {
 		try {
 			const response = await usersAPI.getUser(id);
@@ -32,6 +32,8 @@ const userEdit = ({ id }) => {
 
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
+			if (!(await messageQuestion('Update user'))) return;
+
 			const urlImg = await handleUploadFile(avatarMember.files);
 			let checkAva;
 
@@ -48,12 +50,11 @@ const userEdit = ({ id }) => {
 				user_password: password.value,
 				user_email: email.value,
 				user_avatar: checkAva,
-				gender: genderValue,
-				role: roleValue,
-				active: activeValue,
+				gender: +genderMember.value,
+				role: +roleSelect.value,
+				active: +activeSelect.value,
 			};
 
-			if (!(await messageQuestion('Add user'))) return;
 			try {
 				await usersAPI.updateUser(dataUser);
 				router.navigate('/admin/user');
@@ -71,7 +72,6 @@ const userEdit = ({ id }) => {
 			console.log(error);
 		}
 	};
-	console.log(user.user_fullname);
 
 	const template = `
 <div class="addProducts">
@@ -182,10 +182,10 @@ const userEdit = ({ id }) => {
           >
         <select class="form-select" id="active-select" aria-label="">
             <option value="1" ${
-							user.role === 1 ? 'selected' : ''
+							user.active === 1 ? 'selected' : ''
 						}>Kích hoạt</option>
             <option value="0" ${
-							user.role === 0 ? 'selected' : ''
+							user.active === 0 ? 'selected' : ''
 						}>Chưa kích hoạt</option>
         </select>
         <span class="message"> </span>

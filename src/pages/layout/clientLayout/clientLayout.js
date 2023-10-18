@@ -16,7 +16,7 @@ const clientLayout = (page) => {
 
 	useEffect(() => {
 		const bodyTag = document.querySelector('body');
-		const userTag = document.querySelector('.header-icon');
+		const userTags = document.querySelectorAll('.icon-user');
 
 		if (
 			document.querySelector('#signin') ||
@@ -33,25 +33,66 @@ const clientLayout = (page) => {
 		}
 		//
 		if (user) {
-			userTag.classList.add('login');
-			const headImg = document.querySelector('.head-img img');
-			const headInfo = document.querySelector('.head-info h3');
-			const headInfoSpan = document.querySelector('.head-info span');
-			headInfo.innerHTML = member?.user_fullname ? member?.user_fullname : '';
-			headInfoSpan.innerHTML = member?.user_email ? member?.user_email : '';
-			headImg.setAttribute(
-				'src',
-				member?.user_avatar
-					? member?.user_avatar
-					: 'https://media.istockphoto.com/id/1448474701/photo/graphic-designer-smiles-as-she-works-on-a-laptop-in-an-office.webp?b=1&s=612x612&w=0&k=20&c=JFR5nH-aKvlKWR9H9zj6ml6bH5vyR7N_t-MxvBbJexs='
-			);
+			userTags.forEach((userTag) => {
+				userTag.classList.add('login');
+			});
+			const imgUsers = document.querySelectorAll('.img-user');
+			const headImgs = document.querySelectorAll('.head-img img');
+
+			const headInfors = document.querySelectorAll('.head-info h3');
+			const headInfoSpans = document.querySelectorAll('.head-info span');
+			headInfors.forEach((headInfo) => {
+				headInfo.innerHTML = member?.user_name
+					? member?.user_name
+					: member?.user_fullname;
+			});
+			headInfoSpans.forEach((headInfoSpan) => {
+				headInfoSpan.innerHTML = member?.user_email ? member?.user_email : '';
+			});
+			imgUsers.forEach((imgUser) => {
+				imgUser.setAttribute(
+					'src',
+					member?.user_avatar
+						? member?.user_avatar
+						: 'https://as1.ftcdn.net/v2/jpg/02/59/39/46/1000_F_259394679_GGA8JJAEkukYJL9XXFH2JoC3nMguBPNH.jpg'
+				);
+			});
+			headImgs.forEach((headImg) => {
+				headImg.setAttribute(
+					'src',
+					member?.user_avatar
+						? member?.user_avatar
+						: 'https://as1.ftcdn.net/v2/jpg/02/59/39/46/1000_F_259394679_GGA8JJAEkukYJL9XXFH2JoC3nMguBPNH.jpg'
+				);
+			});
 		} else {
-			userTag.classList.remove('login');
+			userTags.forEach((userTag) => {
+				userTag.classList.remove('login');
+			});
 		}
 		//
 
 		//
 	});
+
+	//-- handle view passs --///
+
+	useEffect(() => {
+		const btnPassShow = document.querySelector('.showPassBtn');
+		const inputPasswords = document.querySelectorAll('.showPassword');
+
+		console.log(inputPasswords);
+		btnPassShow?.addEventListener('click', () => {
+			inputPasswords?.forEach((input) => {
+				if (input.type === 'password') {
+					input.type = 'text';
+				} else {
+					input.type = 'password';
+				}
+			});
+		});
+	});
+
 	return `
     ${page}
   `;

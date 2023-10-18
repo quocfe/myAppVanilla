@@ -14,7 +14,6 @@ const usersAPI = {
 		return callAPI.post(url, user);
 	},
 	updateUser(user) {
-		console.log(user);
 		const userId = user.id;
 		const url = `/users/${userId}`;
 		return callAPI.patch(url, user);
