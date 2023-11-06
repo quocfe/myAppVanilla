@@ -188,7 +188,7 @@ const homepage = () => {
         <div class="swiper-wrapper">
 
         ${productLimit
-					.map(
+					?.map(
 						(el) => `
         <div class="swiper-slide rounded overflow-hidden">
             <div class="item">

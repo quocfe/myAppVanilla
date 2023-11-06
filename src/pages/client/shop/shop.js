@@ -19,6 +19,7 @@ const shop = () => {
 		_page: 1,
 		_limit: 6,
 	});
+
 	let totalPage = Math.ceil(totalRow / filter._limit);
 
 	useEffect(async () => {
@@ -70,7 +71,6 @@ const shop = () => {
 				let newPrdID = [...idLocal];
 				newPrdID.push(prdID);
 				setCurrentID(newPrdID);
-				console.log('khong null');
 			}
 			//  else {
 			// 	setCurrentID((prevID) => [...prevID, prdID]);
@@ -232,19 +232,15 @@ const shop = () => {
                 <li class="mb-2">
                   <p class="cate-title">All</p>
                 </li>
-              ${
-								category
-									? category
-											?.map(
-												(el) => `
+              ${category
+								?.map(
+									(el) => `
                 <li class="mb-2">
                   <p class="cate-title">${el.name}</p>
                 </li>
               `
-											)
-											.join('')
-									: ''
-							}
+								)
+								.join('')}
               </ul>
             </div>
 
@@ -270,21 +266,7 @@ const shop = () => {
 									</div>
               </div>
 
-              <div class="mb-4 filter-size">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
-                <label for="s_sm" class="d-flex mb-2 align-items-center">
-                  <input type="checkbox" id="s_sm" class="mr-2 mt-1" />
-                  <span class="text-black">Small (2,319)</span>
-                </label>
-                <label for="s_md" class="d-flex mb-2 align-items-center">
-                  <input type="checkbox" id="s_md" class="mr-2 mt-1" />
-                  <span class="text-black">Medium (1,282)</span>
-                </label>
-                <label for="s_lg" class="d-flex mb-2 align-items-center">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1" />
-                  <span class="text-black">Large (1,392)</span>
-                </label>
-              </div>
+              
             </div>
           </div>
         </div>

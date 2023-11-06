@@ -1,6 +1,21 @@
+import { useEffect } from '@/utils';
 import * as style from './style.module.css';
 
 const member = (page) => {
+	useEffect(() => {
+		const currentPathname = window.location.pathname;
+		const pathNamesTag = document.querySelectorAll(
+			`.${style.member_sidebar} ul li a`
+		);
+
+		pathNamesTag.forEach((pathNameTag) => {
+			const pathName = pathNameTag.getAttribute('href');
+			if (currentPathname == pathName) {
+				pathNameTag.setAttribute('class', style.active);
+			}
+		});
+	});
+
 	const template = `
     <div class="member container mt-4"> 
       <div class="row"> 

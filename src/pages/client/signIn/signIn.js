@@ -33,7 +33,9 @@ const signIn = () => {
 			onsubmit: (data) => {
 				const { email, password } = data;
 				const user = users.filter((user) => user.user_email === email);
-				let emailEmpty = users.some((user) => user.user_email === email);
+				let emailEmpty = users.some(
+					(user) => user.user_email.toLowerCase() === email.toLowerCase()
+				);
 
 				if (!emailEmpty) {
 					toast({
@@ -43,12 +45,19 @@ const signIn = () => {
 						show: true,
 					});
 				} else {
-					const [{ id, user_password }] = user;
+					const [{ id, user_password, active }] = user;
 
 					if (password != user_password) {
 						toast({
 							title: 'Thất bại',
 							message: 'Mật khẩu không chính xác !',
+							type: 'error',
+							show: true,
+						});
+					} else if (active === 0) {
+						toast({
+							title: 'Thất bại',
+							message: 'Tài khoản của bạn đã bị khóa !',
 							type: 'error',
 							show: true,
 						});

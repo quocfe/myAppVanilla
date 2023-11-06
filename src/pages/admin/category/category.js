@@ -49,13 +49,13 @@ const category = () => {
             </tr>
           </thead>
           <tbody class=${style.headBody}>
-          ${categories.map((cate) => `
+          ${categories.map(({id, name}) => `
               <tr class=${style.headBody}> 
-                <td>${cate.id}</td>
-                <td>${cate.name}</td>
+                <td>${id}</td>
+                <td>${name}</td>
                 <td>
-                  <button data-id=${cate.id} type="button" class="btn btn-danger">DELETE</button>
-                  <a  href=/admin&categoriesEdit=${cate.id} type="button" class="btn btn-primary">EDIT</a>
+                  <button data-id=${id} type="button" class="btn btn-danger">DELETE</button>
+                  <a  href=/admin&categoriesEdit=${id} type="button" class="btn btn-primary">EDIT</a>
                 </td>
               </tr>
               `

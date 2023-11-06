@@ -1,46 +1,47 @@
-import categoryApi from "@/api/categoryApi";
-import { messageQuestion } from "@/components";
-import { router, useEffect, useState } from "@/utils";
+import categoryApi from '@/api/categoryApi';
+import { messageQuestion } from '@/components';
+import { router, useEffect, useState } from '@/utils';
 
 const categoryEdit = (data) => {
-  const cateID = data.id;
-  const [category, setCategory] = useState({});
-  console.log("state", category)
-  useEffect(()=> {
-    (async () => {
-      try {
-          const response = await categoryApi.getCategory(cateID)
-          if (response.status === 200) {
-            setCategory(response.data);
-          }
-      } catch (error) {
-          console.log(error);
-      }
-  })();
-  }, [])
+	const cateID = data.id;
+	const [category, setCategory] = useState({});
 
-  useEffect(()=> {
-    const form = document.querySelector(".form");
-    const categoryName = document.querySelector("#categoryName");
-    const idCate = document.querySelector("#idCate");
+	useEffect(() => {
+		(async () => {
+			try {
+				const response = await categoryApi.getCategory(cateID);
+				if (response.status === 200) {
+					setCategory(response.data);
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		})();
+	}, []);
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault()
-      try {
-        if (!(await messageQuestion("Update category"))) return
-        await categoryApi.updateCategoy({
-          id:  idCate.value,
-          name: categoryName.value
-        });
-        router.navigate("/admin&categories")
-      } catch (error) {
-        console.log(error)
-      }
-    } )
+	useEffect(() => {
+		const form = document.querySelector('.form');
+		const categoryName = document.querySelector('#categoryName');
+		const idCate = document.querySelector('#idCate');
 
-  })
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			try {
+				if (!(await messageQuestion('Update category'))) return;
+				await categoryApi.updateCategoy({
+					id: idCate.value,
+					name: categoryName.value,
+				});
+				router.navigate('/admin&categories');
+			} catch (error) {
+				console.log(error);
+			}
+		});
+	});
 
-  const template = `
+	const { id, name } = category;
+
+	const template = `
   <div class="addProducts">
   <form class="container form" enctype="multipart/form-data>
     <p class="title">Thêm mới danh mục</p>
@@ -56,7 +57,7 @@ const categoryEdit = (data) => {
             class="form-control"
             id="idCate"
             placeholder="Auto increment"
-            value="${category.id ?? ""}"
+            value="${id ?? ''}"
           />
         </div>
       </div>
@@ -70,7 +71,7 @@ const categoryEdit = (data) => {
             class="form-control"
             id="categoryName"
             placeholder=""
-            value="${category.name ?? ""}"
+            value="${name ?? ''}"
           />
         </div>
       </div>
@@ -78,8 +79,8 @@ const categoryEdit = (data) => {
     <button class="btn btn-primary">Update Category</button>
   </form>
 </div>
-  `
-  return template
+  `;
+	return template;
 };
 
 export default categoryEdit;

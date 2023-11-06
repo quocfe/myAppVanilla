@@ -35,7 +35,7 @@ const productsAdd = () => {
 					category: cateSelect.value,
 					thumbnail: urlImg,
 				});
-				router.navigate('/admin&products');
+				router.navigate('/admin/products');
 			} catch (error) {
 				console.log(error);
 			}

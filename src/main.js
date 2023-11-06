@@ -30,6 +30,7 @@ import {
 	userEdit,
 	orderAdmin,
 	detailOrder,
+	chart,
 } from './pages/admin';
 import {
 	home,
@@ -74,6 +75,7 @@ router.on({
 		render(() => clientLayout(detail(data)), app);
 	},
 });
+
 router.on({
 	'/member': () => render(() => clientLayout(member(home())), app),
 	'/member/order': () => render(() => clientLayout(member(order())), app),
@@ -131,9 +133,10 @@ router.on({
 	'/admin/detail_order/:id': ({ data }) => {
 		render(() => adminLayout(detailOrder(data)), app);
 	},
+	'/admin/chart': () => {
+		render(() => adminLayout(chart()), app);
+	},
 });
-
-router.notFound(() => render(app));
 
 router.resolve();
 

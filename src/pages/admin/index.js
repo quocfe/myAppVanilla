@@ -9,7 +9,8 @@ import user from './user/user';
 import userAdd from './user/userAdd';
 import userEdit from './user/userEdit';
 import orderAdmin from './order/order';
-import detailOrder from './detailOrder/detailorder';
+import detailOrder from './detailOrder/detailOrder';
+import chart from './chart/chart';
 
 export {
 	products,
@@ -24,4 +25,5 @@ export {
 	userEdit,
 	orderAdmin,
 	detailOrder,
+	chart,
 };

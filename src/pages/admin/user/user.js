@@ -1,6 +1,8 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { useEffect, useState } from '@/utils';
 import * as style from './style.module.css';
 import { usersAPI } from '@/api';
+import { messageQuestion } from '@/components';
 
 const user = () => {
 	const [member, setMember] = useState([]);
@@ -12,7 +14,26 @@ const user = () => {
 			console.log(error);
 		}
 	}, []);
-	console.log(member);
+	useEffect(() => {
+		const btnDisables = document.querySelectorAll('.btnClick');
+		btnDisables.forEach((btnDisable, index) => {
+			btnDisable.addEventListener('click', async () => {
+				if (!(await messageQuestion('Update user'))) return;
+				const newActive = member[index].active === 0 ? 1 : 0;
+				const dataUser = {
+					id: member[index].id,
+					active: newActive,
+				};
+				try {
+					await usersAPI.updateUser(dataUser);
+					location.reload();
+				} catch (error) {
+					console.log(error);
+				}
+			});
+		});
+	});
+
 	const template = `
       <div class="main">
         <div class="container-fluid">
@@ -50,7 +71,15 @@ const user = () => {
 													}" type="button" class="btn btn-primary">Sửa</a>
                         </td>
                           <td>
-                            <a href="" type="button" class="btn btn-danger">Vô hiệu hóa</a>
+                            <input ${
+															el.active === 0
+																? `class="btn btn-success btnEnable btnClick" value="Kích hoạt" ${
+																		el.role === 0 ? 'disabled' : ''
+																  }`
+																: `class="btn btn-danger btnDisable btnClick" value="Vô hiệu hóa" ${
+																		el.role === 0 ? 'disabled' : ''
+																  }`
+														}  type="button" />
                           </td>
                       </tr>
                   `

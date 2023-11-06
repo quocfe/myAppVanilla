@@ -1,4 +1,6 @@
-import { productAPI } from '@/api';
+import { productAPI, usersAPI } from '@/api';
+import { useEffect } from '.';
+import { useLocalStorage } from '@/hooks';
 
 function debounce(func, delay) {
 	let timeoutId;
@@ -117,3 +119,41 @@ userIconTags.forEach((userIconTag) => {
 		}
 	});
 });
+
+const btnPassShow = document.querySelector('.showPassBtn');
+const inputPasswords = document.querySelectorAll('.showPassword');
+
+btnPassShow?.addEventListener('click', () => {
+	inputPasswords?.forEach((input) => {
+		if (input.type === 'password') {
+			input.type = 'text';
+		} else {
+			input.type = 'password';
+		}
+	});
+});
+
+// --- //
+const [user] = useLocalStorage('user', '');
+const parent = document.querySelector('.user-menu');
+const child = parent.querySelectorAll('ul');
+useEffect(async () => {
+	try {
+		const response = await usersAPI.getUser(user);
+		let member = response.data;
+		if (member.role === 0 && child[0].hasChildNodes()) {
+			const adminPage = `
+			<ul class="user-item">
+				<li class="adminRef"><a href="/admin">Trang quản trị</a></li>
+			</ul>
+			`;
+			child[0].insertAdjacentHTML('beforeend', adminPage);
+		} else {
+			child[0].insertAdjacentHTML('beforeend', '');
+		}
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+// --- //

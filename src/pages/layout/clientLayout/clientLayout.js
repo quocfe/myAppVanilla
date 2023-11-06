@@ -4,7 +4,8 @@ import { useEffect, useState } from '@/utils';
 
 const clientLayout = (page) => {
 	const [user] = useLocalStorage('user', '');
-	const [member, setMember] = useState();
+	const [member, setMember] = useState([]);
+	// const { role } = member;
 	useEffect(async () => {
 		try {
 			const response = await usersAPI.getUser(user);
@@ -12,7 +13,7 @@ const clientLayout = (page) => {
 		} catch (error) {
 			console.log(error);
 		}
-	}, []);
+	}, [user]);
 
 	useEffect(() => {
 		const bodyTag = document.querySelector('body');
@@ -33,6 +34,7 @@ const clientLayout = (page) => {
 		}
 		//
 		if (user) {
+			// --- add img -- //
 			userTags.forEach((userTag) => {
 				userTag.classList.add('login');
 			});
@@ -42,12 +44,12 @@ const clientLayout = (page) => {
 			const headInfors = document.querySelectorAll('.head-info h3');
 			const headInfoSpans = document.querySelectorAll('.head-info span');
 			headInfors.forEach((headInfo) => {
-				headInfo.innerHTML = member?.user_name
-					? member?.user_name
-					: member?.user_fullname;
+				headInfo.innerHTML = member?.user_name ? member?.user_name : 'my name';
 			});
 			headInfoSpans.forEach((headInfoSpan) => {
-				headInfoSpan.innerHTML = member?.user_email ? member?.user_email : '';
+				headInfoSpan.innerHTML = member?.user_email
+					? member?.user_email
+					: 'abc@gmail.com';
 			});
 			imgUsers.forEach((imgUser) => {
 				imgUser.setAttribute(
@@ -65,6 +67,7 @@ const clientLayout = (page) => {
 						: 'https://as1.ftcdn.net/v2/jpg/02/59/39/46/1000_F_259394679_GGA8JJAEkukYJL9XXFH2JoC3nMguBPNH.jpg'
 				);
 			});
+			// -- //
 		} else {
 			userTags.forEach((userTag) => {
 				userTag.classList.remove('login');
@@ -75,13 +78,11 @@ const clientLayout = (page) => {
 		//
 	});
 
-	//-- handle view passs --///
-
 	useEffect(() => {
+		//-- handle view passs --///
 		const btnPassShow = document.querySelector('.showPassBtn');
 		const inputPasswords = document.querySelectorAll('.showPassword');
 
-		console.log(inputPasswords);
 		btnPassShow?.addEventListener('click', () => {
 			inputPasswords?.forEach((input) => {
 				if (input.type === 'password') {
@@ -91,7 +92,24 @@ const clientLayout = (page) => {
 				}
 			});
 		});
+		// ---- //
 	});
+
+	// useEffect(() => {
+	// 	const parent = document.querySelector('.user-menu');
+	// 	const child = parent.querySelectorAll('ul');
+	// 	if (member.role === 0) {
+	// 		console.log('test trang');
+	// 		const adminPage = `
+	// 		<ul class="user-item">
+	// 			<li><a href="/admin">Trang quản trị</a></li>
+	// 		</ul>
+	// 		`;
+	// 		child[0].insertAdjacentHTML('beforeend', adminPage);
+	// 	} else {
+	// 		child[0].insertAdjacentHTML('beforeend', '');
+	// 	}
+	// });
 
 	return `
     ${page}

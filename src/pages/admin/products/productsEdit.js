@@ -1,3 +1,4 @@
+import { categoryApi, updateImgApi } from '@/api';
 import productAPI from '@/api/productApi';
 import { messageQuestion } from '@/components';
 import { router, useEffect, useState } from '@/utils';
@@ -5,10 +6,13 @@ import { router, useEffect, useState } from '@/utils';
 const productsEdit = (data) => {
 	const productID = data.id;
 	const [product, setProduct] = useState({});
+	const [cate, setCate] = useState([]);
 
 	useEffect(async () => {
 		try {
 			const response = await productAPI.getProduct(productID);
+			const responseCate = await categoryApi.getCategories();
+			setCate(responseCate.data);
 			if (response.status === 200) {
 				setProduct(response.data);
 			}
@@ -24,9 +28,19 @@ const productsEdit = (data) => {
 		const productDescription = document.querySelector('#productDescription');
 		const productImg = document.querySelector('#productImg');
 		const cateSelect = document.querySelector('.form-select');
+		const productImgOld = document.querySelector('#productImgOld');
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
 			if (!(await messageQuestion('Update product'))) return;
+
+			const urlImg = await handleUploadFile(productImg.files);
+			let checkImg;
+
+			if (productImgOld.value != urlImg && urlImg) {
+				checkImg = urlImg;
+			} else {
+				checkImg = productImgOld.value;
+			}
 			try {
 				await productAPI.updateProduct({
 					id: productID,
@@ -34,15 +48,23 @@ const productsEdit = (data) => {
 					price: +productPrice.value,
 					description: productDescription.value,
 					category: cateSelect.value,
-					image: productImg.value,
+					thumbnail: checkImg,
 				});
-				router.navigate('/admin&products');
+				router.navigate('/admin/products');
 			} catch (error) {
 				console.log(error);
 			}
 		});
+		const handleUploadFile = async (file) => {
+			try {
+				const response = await updateImgApi.updateImg(file[0]);
+				return response.data.secure_url;
+			} catch (error) {
+				console.log(error);
+			}
+		};
 	});
-
+	const { category, description, id, price, thumbnail, title } = product;
 	const template = `
   <div class="addProducts">
   <form class="container form" enctype="multipart/form-data>
@@ -59,7 +81,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="id"
             placeholder="Auto increment"
-            value="${product.id ?? ''}"
+            value="${id ?? ''}"
           />
         </div>
       </div>
@@ -73,7 +95,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="productName"
             placeholder=""
-            value="${product.title ?? ''}"
+            value="${title ?? ''}"
           />
         </div>
       </div>
@@ -87,7 +109,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="productPrice"
             placeholder=""
-            value="${product.price ?? ''}"
+            value="${price ?? ''}"
           />
         </div>
       </div>
@@ -101,7 +123,7 @@ const productsEdit = (data) => {
             class="form-control"
             id="productDescription"
             placeholder=""
-            value="${product.description ?? ''}"
+            value="${description ?? ''}"
           />
         </div>
       </div>
@@ -111,10 +133,16 @@ const productsEdit = (data) => {
             >Category</label
           >
           <select class="form-select " aria-label="">
-            <option selected>${product.category ?? 'Category'}</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option selected>Category</option>
+            ${cate
+							.map(
+								(el) => `
+              <option  ${el.name === category ? 'selected' : ''} value="${
+									el.name
+								}">${el.name}</option>
+            `
+							)
+							.join('')}
         </select>
         </div>
       </div>
@@ -123,13 +151,15 @@ const productsEdit = (data) => {
           <label for="productImg" class="form-label"
             >Product Image</label
           >
+
           <input
             type="file"
             class="form-control"
             id="productImg"
             placeholder="name@example.com"
-            value="${product.image ?? ''}"
+            value=""
           />
+          <input type="hidden" id="productImgOld" value=${thumbnail ?? ' '} />
         </div>
       </div>
     </div>

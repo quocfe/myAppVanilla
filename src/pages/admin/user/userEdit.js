@@ -1,6 +1,6 @@
 import { updateImgApi, usersAPI } from '@/api';
 import { messageQuestion } from '@/components';
-import { useEffect, useState, router } from '@/utils';
+import { router, useEffect, useState } from '@/utils';
 
 const userEdit = ({ id }) => {
 	const [user, setUser] = useState({});
@@ -22,11 +22,11 @@ const userEdit = ({ id }) => {
 		const fullname = document.querySelector('#fullname');
 		const email = document.querySelector('#email');
 		const roleSelect = document.querySelector('#role-select');
-		const roleValue = roleSelect.options[roleSelect.selectedIndex].value;
+		// const roleValue = roleSelect.options[roleSelect.selectedIndex].value;
 		const activeSelect = document.querySelector('#active-select');
-		const activeValue = activeSelect.options[activeSelect.selectedIndex].value;
+		// const activeValue = activeSelect.options[activeSelect.selectedIndex].value;
 		const genderMember = document.querySelector('#gender-select');
-		const genderValue = genderMember.options[genderMember.selectedIndex].value;
+		// const genderValue = genderMember.options[genderMember.selectedIndex].value;
 		const avatarMember = document.querySelector('#avatar-member');
 		const avatarOld = document.querySelector('#avatar-old');
 

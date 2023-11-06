@@ -45,7 +45,7 @@ const signUp = () => {
 				});
 
 				const emailExits = mailsLocal.filter(
-					(mailLocal) => mailLocal === email
+					(mailLocal) => mailLocal.toLowerCase() === email.toLowerCase()
 				);
 				const userNameExits = userNamesLocal.filter(
 					(userNameLocal) => userNameLocal === username
@@ -57,8 +57,7 @@ const signUp = () => {
 						type: 'error',
 						show: true,
 					});
-				}
-				if (emailExits.length != 0) {
+				} else if (emailExits.length != 0) {
 					toast({
 						title: 'Thất bại',
 						message: 'Email đã tồn tại trên hệ thống!',
@@ -70,8 +69,11 @@ const signUp = () => {
 						user_name: username,
 						user_fullname: '',
 						user_password: passwordconfirm,
-						user_email: email,
+						user_email: email.toLowerCase(),
 						user_avatar: '',
+						gender: 1,
+						role: 1,
+						active: 1,
 					};
 					try {
 						await usersAPI.addUser(userData);
@@ -91,7 +93,7 @@ const signUp = () => {
 	});
 
 	const template = `
-  <section class="vh-100" id="signup" style="background-color: #eee">
+  <section class="vh-100" style="background-color: #eee">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-12 col-xl-11">

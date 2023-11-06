@@ -780,6 +780,11 @@ body {
 	color: #1d2129;
 	text-transform: uppercase;
 }
+.cate-title.active {
+	font-weight: 500;
+	color: var(--color-primary);
+}
+
 .cate-title:hover {
 	color: var(--color-primary);
 }

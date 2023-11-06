@@ -2,7 +2,7 @@ import { updateImgApi, usersAPI } from '@/api';
 import * as style from './style.module.css';
 import { useLocalStorage } from '@/hooks';
 import { useEffect, useState } from '@/utils';
-import { messageQuestion } from '@/components';
+import { messageQuestion, toast } from '@/components';
 
 const account = () => {
 	const [userLocal] = useLocalStorage('user');
@@ -26,7 +26,7 @@ const account = () => {
 		const avatar = document.querySelector(`.${style.account_head_img} img`);
 		const editImgBtn = document.querySelector('.btn_editImg');
 		const file = document.querySelector('#file');
-		const headerImg = document.querySelector('.header-icon img');
+		const headerImgs = document.querySelectorAll('.header-icon img');
 
 		editBtn.addEventListener('click', () => {
 			formAccount.classList.add(`${style.show}`);
@@ -60,18 +60,29 @@ const account = () => {
 
 		editImgBtn.addEventListener('click', async (e) => {
 			e.preventDefault();
-			if (!(await messageQuestion('Update Image'))) return;
-			const urlImg = await handleUploadFile(file.files);
-			const data = {
-				id: userLocal,
-				user_avatar: urlImg,
-			};
-			try {
-				await usersAPI.updateUser(data);
-				avatar.setAttribute('src', data.user_avatar);
-				headerImg.setAttribute('src', data.user_avatar);
-			} catch (error) {
-				console.log(error);
+			if (file.value.length === 0) {
+				toast({
+					title: 'Thất bại',
+					message: 'Vui lòng chọn ảnh!',
+					type: 'error',
+					show: true,
+				});
+			} else {
+				if (!(await messageQuestion('Update Image'))) return;
+				const urlImg = await handleUploadFile(file.files);
+				const data = {
+					id: userLocal,
+					user_avatar: urlImg,
+				};
+				try {
+					await usersAPI.updateUser(data);
+					avatar.setAttribute('src', data.user_avatar);
+					headerImgs.forEach((headerImg) => {
+						headerImg.setAttribute('src', data.user_avatar);
+					});
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		});
 
@@ -88,6 +99,7 @@ const account = () => {
 	const { user_name, user_fullname, user_email, gender, user_avatar } = user;
 
 	const template = `
+
       <form method="post" id="changeInfor" enctype="multipart/form-data">
         <div class="account">
           <div class="${style.account_head}">
@@ -121,7 +133,7 @@ const account = () => {
 										user_fullname ? user_fullname : ''
 									}">
                   <p class="label_fullname">${
-										user_fullname ? user_fullname : ''
+										user_fullname ? user_fullname : 'Họ Tên'
 									}</p>
                 </div>
                 <div class="${style.form_group}">
@@ -133,7 +145,7 @@ const account = () => {
                 </div>
                 <div class="${style.form_group}">
                   <label for="">Email</label>
-                  <input type="text" name="email" id="email" value="${
+                  <input readonly type="text" name="email" id="email" value="${
 										user_email ? user_email : ''
 									}">
                   <p >${user_email ? user_email : ''}</p>

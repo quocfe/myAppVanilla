@@ -2,13 +2,12 @@
   "products": [
     {
       "id": 6,
-      "title": "MacBook Pro 4",
-      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+      "title": "MacBook Air M3",
+      "description": "Apple Macbook Air M2 2022 8GB 256GB I Chính hãng Apple Việt Nam",
       "price": 600,
       "brand": "Apple",
       "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
-      "image": ""
+      "thumbnail": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697871513/lazedaFpoly/f8ohu76eanlakenb8lmu.jpg"
     },
     {
       "id": 7,
@@ -225,14 +224,6 @@
       "brand": "Golden",
       "category": "home-decoration",
       "thumbnail": "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
-    },
-    {
-      "title": "Levents® Basic Sweater/ Grey",
-      "price": 100,
-      "description": "LEVENTS® BASIC SWEATER Chất liệu: Nỉ Kích cỡ: 2/3/4  Sản phẩm thuộc thuộc Bộ sưu tập Thu/ Đông 2022 của Levents   ",
-      "category": "clothing",
-      "thumbnail": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697092271/lazedaFpoly/penyxcvht0gzguatlriv.jpg",
-      "id": 31
     }
   ],
   "categories": [
@@ -257,207 +248,240 @@
       "name": "home-decoration"
     },
     {
-      "name": "clothing",
-      "id": 7
+      "id": 7,
+      "name": "clothing"
     }
   ],
   "orders": [
     {
-      "user_id": 3,
-      "user_address": "Doi Can - Phường Hòa Minh - Quận Liên Chiểu - Thành phố Đà Nẵng",
+      "user_id": 1,
+      "user_address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
-      "created_date": "14-10-2023",
-      "status": "Hủy",
+      "created_date": "20-10-2023",
+      "status": "Đang xử lý",
       "id": 1
     },
     {
       "user_id": 3,
-      "user_address": "Doi Can - Phường Quang Trung - Thành phố Hà Giang - Tỉnh Hà Giang",
-      "user_email": "Luti0510@gmail.com",
-      "user_phone_number": "0383995412",
-      "created_date": "15-10-2023",
+      "user_address": "123 Quang Trung - Xã Cốc Đán - Huyện Ngân Sơn - Tỉnh Bắc Kạn",
+      "user_email": "annhien@gmail.com",
+      "user_phone_number": "0799240222",
+      "created_date": "20-10-2023",
       "status": "Đang xử lý",
       "id": 2
     },
     {
       "user_id": 3,
-      "user_address": "123 Quang Trung - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
-      "user_email": "Luti0510@gmail.com",
-      "user_phone_number": "0383995412",
-      "created_date": "15-10-2023",
+      "user_address": "123 Nguyễn Thị Thập - Xã Quy Kỳ - Huyện Định Hóa - Tỉnh Thái Nguyên",
+      "user_email": "annhien@gmail.com",
+      "user_phone_number": "0979240222",
+      "created_date": "17-10-2023",
       "status": "Đang xử lý",
       "id": 3
     },
     {
       "user_id": 3,
-      "user_address": "Doi Can - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
-      "user_email": "Luti0510@gmail.com",
-      "user_phone_number": "0383995412",
-      "created_date": "15-10-2023",
+      "user_address": "123 Bình Thái - Phường Hòa Thọ Tây - Quận Cẩm Lệ - Thành phố Đà Nẵng",
+      "user_email": "annhien@gmail.com",
+      "user_phone_number": "0949333423",
+      "created_date": "16-10-2023",
       "status": "Đang xử lý",
       "id": 4
     },
     {
-      "user_id": 3,
-      "user_address": "123 Quang Trung - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_id": 5,
+      "user_address": "123 Nguyễn Thị Thập - Xã Phúc Khoa - Huyện Tân Uyên - Tỉnh Lai Châu",
       "user_email": "Luti0510@gmail.com",
-      "user_phone_number": "0383995412",
-      "created_date": "15-10-2023",
-      "status": "Đang xử lý",
+      "user_phone_number": "0989812345",
+      "created_date": "21-10-2023",
+      "status": "Đã xác nhận",
       "id": 5
     },
     {
-      "user_id": 3,
-      "user_address": "123 Nguyễn Thị Thập - Xã Cốc Pàng - Huyện Bảo Lạc - Tỉnh Cao Bằng",
-      "user_email": "Luti0510@gmail.com",
-      "user_phone_number": "0383995412",
-      "created_date": "15-10-2023",
-      "status": "Đang xử lý",
+      "user_id": 4,
+      "user_address": "123 Quang Trung - Phường Tứ Liên - Quận Tây Hồ - Thành phố Hà Nội",
+      "user_email": "haonam@gmail.com",
+      "user_phone_number": "0987778934",
+      "created_date": "21-10-2023",
+      "status": "Đã xác nhận",
       "id": 6
     },
     {
-      "user_id": 1,
-      "user_address": "123 Quang Trung - Xã Định Bình - Thành phố Cà Mau - Tỉnh Cà Mau",
+      "user_id": 5,
+      "user_address": "123 Bình Thái - Phường Trúc Bạch - Quận Ba Đình - Thành phố Hà Nội",
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
-      "created_date": "15-10-2023",
-      "status": "Đã xác nhận",
+      "created_date": "21-10-2023",
+      "status": "Đang xử lý",
       "id": 7
     },
     {
-      "user_id": 1,
-      "user_address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "user_id": 6,
+      "user_address": "123 Nguyễn Thị Thập - Xã Pa Tần - Huyện Sìn Hồ - Tỉnh Lai Châu",
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
-      "created_date": "15-10-2023",
-      "status": "Đã xác nhận",
+      "created_date": "22-10-2023",
+      "status": "Đang xử lý",
       "id": 8
     },
     {
-      "user_id": 1,
-      "user_address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
-      "user_email": "Luti0510@gmail.com",
-      "user_phone_number": "0383995412",
-      "created_date": "16-10-2023",
-      "status": "Đang xử lý",
+      "user_id": 6,
+      "user_address": "123 Quang Trung - Xã Bằng Vân - Huyện Ngân Sơn - Tỉnh Bắc Kạn",
+      "user_email": "quoc123@gmail.com",
+      "user_phone_number": "0995123123",
+      "created_date": "22-10-2023",
+      "status": "Đã xác nhận",
       "id": 9
     },
     {
-      "user_id": 1,
-      "user_address": "123 Quang Trung - Phường Máy Tơ - Quận Ngô Quyền - Thành phố Hải Phòng",
-      "user_email": "zoro@gmail.com",
+      "user_id": 5,
+      "user_address": "123 Quang Trung - Thị trấn Thuận Châu - Huyện Thuận Châu - Tỉnh Sơn La",
+      "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
-      "created_date": "16-10-2023",
-      "status": "Đã xác nhận",
+      "created_date": "23-10-2023",
+      "status": "Đang xử lý",
       "id": 10
     },
     {
-      "user_id": 3,
-      "user_address": "123 Nguyễn Thị Thập - Phường Sông Hiến - Thành phố Cao Bằng - Tỉnh Cao Bằng",
+      "user_id": 5,
+      "user_address": "123 Quang Trung - Thị trấn Thuận Châu - Huyện Thuận Châu - Tỉnh Sơn La",
       "user_email": "Luti0510@gmail.com",
       "user_phone_number": "0383995412",
-      "created_date": "17-10-2023",
+      "created_date": "23-10-2023",
       "status": "Đã xác nhận",
       "id": 11
+    },
+    {
+      "user_id": 6,
+      "user_address": "123 Bình Thái - Xã Dũng Liệt - Huyện Yên Phong - Tỉnh Bắc Ninh",
+      "user_email": "Luti0510@gmail.com",
+      "user_phone_number": "0383995412",
+      "created_date": "24-10-2023",
+      "status": "Đã xác nhận",
+      "id": 12
     }
   ],
   "order_details": [
     {
       "orders_id": 1,
-      "product_id": 7,
-      "quantity": 2,
-      "unit_price": 400,
-      "total": 800,
+      "product_id": 6,
+      "quantity": 1,
+      "unit_price": 600,
+      "total": 600,
       "id": 1
     },
     {
-      "orders_id": 2,
-      "product_id": 8,
-      "quantity": 2,
-      "unit_price": 949,
-      "total": 1898,
-      "id": 2
-    },
-    {
-      "orders_id": 2,
-      "product_id": 7,
-      "quantity": 2,
-      "unit_price": 400,
-      "total": 800,
-      "id": 3
-    },
-    {
-      "orders_id": 3,
-      "product_id": 10,
-      "quantity": 1,
-      "unit_price": 423,
-      "total": 423,
-      "id": 4
-    },
-    {
-      "orders_id": 3,
-      "product_id": 9,
-      "quantity": 1,
-      "unit_price": 234,
-      "total": 234,
-      "id": 5
-    },
-    {
-      "orders_id": 4,
-      "product_id": 7,
-      "quantity": 2,
-      "unit_price": 400,
-      "total": 800,
-      "id": 6
-    },
-    {
-      "orders_id": 4,
-      "product_id": 8,
-      "quantity": 1,
-      "unit_price": 949,
-      "total": 949,
-      "id": 7
-    },
-    {
-      "orders_id": 5,
-      "product_id": 10,
-      "quantity": 1,
-      "unit_price": 423,
-      "total": 423,
-      "id": 8
-    },
-    {
-      "orders_id": 5,
-      "product_id": 11,
-      "quantity": 1,
-      "unit_price": 555,
-      "total": 555,
-      "id": 9
-    },
-    {
-      "orders_id": 6,
-      "product_id": 7,
-      "quantity": 2,
-      "unit_price": 400,
-      "total": 800,
-      "id": 10
-    },
-    {
-      "orders_id": 7,
+      "orders_id": 1,
       "product_id": 7,
       "quantity": 1,
       "unit_price": 400,
       "total": 400,
-      "id": 11
+      "id": 2
     },
     {
-      "orders_id": 7,
+      "orders_id": 2,
+      "product_id": 6,
+      "quantity": 1,
+      "unit_price": 600,
+      "total": 600,
+      "id": 3
+    },
+    {
+      "orders_id": 2,
+      "product_id": 7,
+      "quantity": 1,
+      "unit_price": 400,
+      "total": 400,
+      "id": 4
+    },
+    {
+      "orders_id": 2,
       "product_id": 8,
       "quantity": 1,
       "unit_price": 949,
       "total": 949,
+      "id": 5
+    },
+    {
+      "orders_id": 3,
+      "product_id": 31,
+      "quantity": 1,
+      "unit_price": 100,
+      "total": 100,
+      "id": 6
+    },
+    {
+      "orders_id": 3,
+      "product_id": 27,
+      "quantity": 1,
+      "unit_price": 499,
+      "total": 499,
+      "id": 7
+    },
+    {
+      "orders_id": 4,
+      "product_id": 18,
+      "quantity": 2,
+      "unit_price": 998,
+      "total": 1996,
+      "id": 8
+    },
+    {
+      "orders_id": 4,
+      "product_id": 17,
+      "quantity": 1,
+      "unit_price": 444,
+      "total": 444,
+      "id": 9
+    },
+    {
+      "orders_id": 4,
+      "product_id": 19,
+      "quantity": 1,
+      "unit_price": 500,
+      "total": 500,
+      "id": 10
+    },
+    {
+      "orders_id": 5,
+      "product_id": 7,
+      "quantity": 2,
+      "unit_price": 400,
+      "total": 800,
+      "id": 11
+    },
+    {
+      "orders_id": 5,
+      "product_id": 8,
+      "quantity": 2,
+      "unit_price": 949,
+      "total": 1898,
       "id": 12
+    },
+    {
+      "orders_id": 6,
+      "product_id": 31,
+      "quantity": 2,
+      "unit_price": 100,
+      "total": 200,
+      "id": 13
+    },
+    {
+      "orders_id": 6,
+      "product_id": 16,
+      "quantity": 1,
+      "unit_price": 638,
+      "total": 638,
+      "id": 14
+    },
+    {
+      "orders_id": 7,
+      "product_id": 6,
+      "quantity": 1,
+      "unit_price": 600,
+      "total": 600,
+      "id": 15
     },
     {
       "orders_id": 8,
@@ -465,158 +489,185 @@
       "quantity": 1,
       "unit_price": 600,
       "total": 600,
-      "id": 13
+      "id": 16
     },
     {
       "orders_id": 9,
+      "product_id": 11,
+      "quantity": 1,
+      "unit_price": 555,
+      "total": 555,
+      "id": 17
+    },
+    {
+      "orders_id": 10,
+      "product_id": 6,
+      "quantity": 2,
+      "unit_price": 600,
+      "total": 1200,
+      "id": 18
+    },
+    {
+      "orders_id": 10,
       "product_id": 7,
       "quantity": 1,
       "unit_price": 400,
       "total": 400,
-      "id": 14
+      "id": 19
     },
     {
-      "orders_id": 10,
-      "product_id": 31,
+      "orders_id": 11,
+      "product_id": 6,
       "quantity": 2,
-      "unit_price": 100,
-      "total": 200,
-      "id": 15
-    },
-    {
-      "orders_id": 10,
-      "product_id": 26,
-      "quantity": 2,
-      "unit_price": 499,
-      "total": 998,
-      "id": 16
+      "unit_price": 600,
+      "total": 1200,
+      "id": 20
     },
     {
       "orders_id": 11,
       "product_id": 7,
-      "quantity": 3,
+      "quantity": 1,
       "unit_price": 400,
-      "total": 1200,
-      "id": 17
+      "total": 400,
+      "id": 21
+    },
+    {
+      "orders_id": 12,
+      "product_id": 7,
+      "quantity": 2,
+      "unit_price": 400,
+      "total": 800,
+      "id": 22
+    },
+    {
+      "orders_id": 12,
+      "product_id": 6,
+      "quantity": 1,
+      "unit_price": 600,
+      "total": 600,
+      "id": 23
     }
   ],
   "shipping": [
     {
       "orders_id": 1,
-      "username": "PhuQuocNguyen",
-      "address": "Doi Can - Phường Hòa Minh - Quận Liên Chiểu - Thành phố Đà Nẵng",
-      "method": "momo",
-      "status": "Đang gửi",
-      "note": "",
-      "created_date": "14-10-2023",
-      "id": 1
-    },
-    {
-      "orders_id": 2,
-      "username": "PhuQuocNguyen",
-      "address": "Doi Can - Phường Quang Trung - Thành phố Hà Giang - Tỉnh Hà Giang",
-      "method": "cod",
-      "status": "Đang gửi",
-      "note": "",
-      "created_date": "15-10-2023",
-      "id": 2
-    },
-    {
-      "orders_id": 3,
-      "username": "PhuQuocNguyen",
-      "address": "123 Quang Trung - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
-      "method": "cod",
-      "status": "Đang gửi",
-      "note": "",
-      "created_date": "15-10-2023",
-      "id": 3
-    },
-    {
-      "orders_id": 4,
-      "username": "test22",
-      "address": "Doi Can - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
-      "method": "cod",
-      "status": "Đang gửi",
-      "note": "",
-      "created_date": "15-10-2023",
-      "totalOrder": null,
-      "id": 4
-    },
-    {
-      "orders_id": 5,
-      "username": "PhuQuocNguyenádasd",
-      "address": "123 Quang Trung - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
-      "method": "cod",
-      "status": "Đang gửi",
-      "note": "",
-      "created_date": "15-10-2023",
-      "totalOrder": 978,
-      "id": 5
-    },
-    {
-      "orders_id": 6,
-      "username": "PhuQuocNguyen",
-      "address": "123 Nguyễn Thị Thập - Xã Cốc Pàng - Huyện Bảo Lạc - Tỉnh Cao Bằng",
-      "method": "momo",
-      "status": "Đang gửi",
-      "note": "",
-      "created_date": "15-10-2023",
-      "totalOrder": 800,
-      "id": 6
-    },
-    {
-      "orders_id": 7,
-      "username": "Monkey D.Dragon",
-      "address": "123 Quang Trung - Xã Định Bình - Thành phố Cà Mau - Tỉnh Cà Mau",
-      "method": "cod",
-      "status": "Đang gửi",
-      "note": "",
-      "created_date": "15-10-2023",
-      "totalOrder": 1349,
-      "id": 7
-    },
-    {
-      "orders_id": 8,
       "username": "quocnguyen",
       "address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
       "method": "cod",
       "status": "Đang gửi",
       "note": "",
-      "created_date": "15-10-2023",
+      "created_date": "20-10-2023",
+      "totalOrder": 1000,
+      "id": 1
+    },
+    {
+      "orders_id": 2,
+      "username": "annhien",
+      "address": "123 Quang Trung - Xã Cốc Đán - Huyện Ngân Sơn - Tỉnh Bắc Kạn",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "18-10-2023",
+      "totalOrder": 1949,
+      "id": 2
+    },
+    {
+      "orders_id": 3,
+      "username": "annhien",
+      "address": "123 Nguyễn Thị Thập - Xã Quy Kỳ - Huyện Định Hóa - Tỉnh Thái Nguyên",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "17-10-2023",
+      "totalOrder": 599,
+      "id": 3
+    },
+    {
+      "orders_id": 4,
+      "username": "Hoàng Vy",
+      "address": "123 Bình Thái - Phường Hòa Thọ Tây - Quận Cẩm Lệ - Thành phố Đà Nẵng",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "16-10-2023",
+      "totalOrder": 2940,
+      "id": 4
+    },
+    {
+      "orders_id": 5,
+      "username": "quocnguyenphu",
+      "address": "123 Nguyễn Thị Thập - Xã Phúc Khoa - Huyện Tân Uyên - Tỉnh Lai Châu",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "21-10-2023",
+      "totalOrder": 2698,
+      "id": 5
+    },
+    {
+      "orders_id": 6,
+      "username": "haonam",
+      "address": "123 Quang Trung - Phường Tứ Liên - Quận Tây Hồ - Thành phố Hà Nội",
+      "method": "momo",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "21-10-2023",
+      "totalOrder": 838,
+      "id": 6
+    },
+    {
+      "orders_id": 7,
+      "username": "quocnguyenphu",
+      "address": "123 Bình Thái - Phường Trúc Bạch - Quận Ba Đình - Thành phố Hà Nội",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "21-10-2023",
+      "totalOrder": 600,
+      "id": 7
+    },
+    {
+      "orders_id": 8,
+      "username": "phuquoc",
+      "address": "123 Nguyễn Thị Thập - Xã Pa Tần - Huyện Sìn Hồ - Tỉnh Lai Châu",
+      "method": "cod",
+      "status": "Đang gửi",
+      "note": "",
+      "created_date": "22-10-2023",
       "totalOrder": 600,
       "id": 8
     },
     {
       "orders_id": 9,
-      "username": "quocnguyen",
-      "address": "123 Nguyễn Thị Thập - Phường Phúc Xá - Quận Ba Đình - Thành phố Hà Nội",
+      "username": "phuquoc",
+      "address": "123 Quang Trung - Xã Bằng Vân - Huyện Ngân Sơn - Tỉnh Bắc Kạn",
       "method": "cod",
       "status": "Đang gửi",
       "note": "",
-      "created_date": "16-10-2023",
-      "totalOrder": 400,
+      "created_date": "22-10-2023",
+      "totalOrder": 555,
       "id": 9
     },
     {
-      "orders_id": 10,
-      "username": "zoro lac duong",
-      "address": "123 Quang Trung - Phường Máy Tơ - Quận Ngô Quyền - Thành phố Hải Phòng",
+      "orders_id": 11,
+      "username": "quocnguyenphu",
+      "address": "123 Quang Trung - Thị trấn Thuận Châu - Huyện Thuận Châu - Tỉnh Sơn La",
       "method": "cod",
       "status": "Đang gửi",
       "note": "",
-      "created_date": "16-10-2023",
-      "totalOrder": 1198,
+      "created_date": "23-10-2023",
+      "totalOrder": 1600,
       "id": 10
     },
     {
-      "orders_id": 11,
-      "username": "PhuQuocNguyen",
-      "address": "123 Nguyễn Thị Thập - Phường Sông Hiến - Thành phố Cao Bằng - Tỉnh Cao Bằng",
+      "orders_id": 12,
+      "username": "phuquoc",
+      "address": "123 Bình Thái - Xã Dũng Liệt - Huyện Yên Phong - Tỉnh Bắc Ninh",
       "method": "cod",
       "status": "Đang gửi",
       "note": "",
-      "created_date": "17-10-2023",
-      "totalOrder": 1200,
+      "created_date": "24-10-2023",
+      "totalOrder": 1400,
       "id": 11
     }
   ],
@@ -624,46 +675,90 @@
     {
       "id": 1,
       "user_name": "quocnguyen",
-      "user_fullname": "Monkey D.Luffy",
-      "user_password": "12344556",
+      "user_fullname": "Nguyễn Phú Quốc",
+      "user_password": "123456",
       "user_email": "quocnguyen@gmail.com",
       "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697211508/lazedaFpoly/iycch7vo19tkckkw99up.jpg",
-      "gender": 1,
-      "role": 0,
+      "gender": 0,
+      "role": 1,
       "active": 1
     },
     {
-      "user_name": "nguyenA",
-      "user_fullname": "nguyen van A",
+      "user_name": "quynguyen",
+      "user_fullname": "Nguyễn Phú Quý",
       "user_password": "123456789",
-      "user_email": "quocnguyen111@gmail.com",
-      "user_avatar": "avatar 2",
+      "user_email": "quynguyen@gmail.com",
+      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697955735/lazedaFpoly/bzuphtqmjvw7p8g0gcmn.jpg",
       "id": 2,
       "gender": 1,
       "role": 1,
       "active": 1
     },
     {
-      "user_name": "PhuQuocNguyen",
-      "user_fullname": "Phú Quý Nguyễn",
-      "user_password": "123123",
-      "user_email": "Luti0510@gmail.com",
+      "user_name": "annhien",
+      "user_fullname": "Nguyễn An Nhien",
+      "user_password": "123456",
+      "user_email": "annhien@gmail.com",
       "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697554989/lazedaFpoly/qn8jzuqjlsmmagv7uuia.webp",
       "id": 3,
+      "gender": 1,
+      "role": 0,
+      "active": 1
+    },
+    {
+      "user_name": "haonam",
+      "user_fullname": "Nguyễn Hạo Nam",
+      "user_password": "123456",
+      "user_email": "haonam@gmail.com",
+      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697609868/lazedaFpoly/yv1xdgreagcxlkf7ypfl.png",
+      "id": 4,
       "gender": 1,
       "role": 1,
       "active": 1
     },
     {
-      "user_name": "PhuQuoc",
-      "user_fullname": "Admin",
+      "user_name": "quocnguyenphu",
+      "user_fullname": "Nguyễn Phú Quốc",
       "user_password": "123123",
-      "user_email": "quocnco@gmail.com",
-      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697609868/lazedaFpoly/yv1xdgreagcxlkf7ypfl.png",
-      "id": 4,
-      "gender": 0,
+      "user_email": "Luti0510@gmail.com",
+      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1697859697/lazedaFpoly/m5wqthgbpdnyw8lok3af.jpg",
+      "gender": 1,
       "role": 1,
-      "active": 1
+      "active": 1,
+      "id": 5
+    },
+    {
+      "user_name": "phuquoc",
+      "user_fullname": "Nguyễn Phu Quy",
+      "user_password": "123456789",
+      "user_email": "quoc123@gmail.com",
+      "user_avatar": "https://res.cloudinary.com/lazedafpoly/image/upload/v1698108071/lazedaFpoly/j9owltlusujyyxf81pmq.webp",
+      "gender": 1,
+      "role": 1,
+      "active": 1,
+      "id": 6
+    },
+    {
+      "user_name": "phuquoc001",
+      "user_fullname": "",
+      "user_password": "123456",
+      "user_email": "quocphu123@mail.com",
+      "user_avatar": "",
+      "gender": 1,
+      "role": 1,
+      "active": 1,
+      "id": 7
+    },
+    {
+      "user_name": "quocnguyen34343",
+      "user_fullname": "",
+      "user_password": "123456",
+      "user_email": "luti05232310@gmail.com",
+      "user_avatar": "",
+      "gender": 1,
+      "role": 1,
+      "active": 1,
+      "id": 8
     }
   ]
 }
